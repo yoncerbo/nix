@@ -61,19 +61,19 @@ in {
   # xdg.configFile.<name>.onChange
 
   xdg.configFile = mkSymlinks {
-    "nushell/config.nu" = "/f/config.nu";
-    "nushell/env.nu" = "/f/env.nu";
-    "hypr/hyprland.conf" = "/f/hyprland.conf";
-    "sway/config" = "/f/sway";
-    "foot/foot.ini" = "/f/foot.ini";
-    "mako/config" = "/f/mako.ini";
-    "wob/wob.ini" = "/f/wob.ini";
-    "mpv/input.conf" = "/f/mpv.conf";
-    "niri/config.kdl" = "/f/niri.kdl";
+    "nushell/config.nu" = "/s/dot/config.nu";
+    "nushell/env.nu" = "/s/dot/env.nu";
+    # "hypr/hyprland.conf" = "/f/hyprland.conf";
+    # "sway/config" = "/f/sway";
+    "foot/foot.ini" = "/s/dot/foot.ini";
+    "mako/config" = "/s/dot/mako.ini";
+    "wob/wob.ini" = "/s/dot/wob.ini";
+    "mpv/input.conf" = "/s/dot/mpv.conf";
+    "niri/config.kdl" = "/s/dot/niri.kdl";
 
     "nushell/history.txt" = "/f/nushell-history.txt";
     fcitx5 = "/f/fcitx5";
-    nvim = "/f/nvim-data";
+    nvim = "/f/nvim";
     cmus = "/f/cmus";
     mozc = "/f/mozc";
     "BraveSoftware/Brave-Browser" = "/f/brave";
@@ -81,8 +81,8 @@ in {
 
   xdg.dataFile = mkSymlinks {
     fcitx5 = "/f/fcitx5";
-    nvim = "/f/nvim-data";
-    nix = "/f/nix-data";
+    nvim = "/f/nvim";
+    nix = "/f/nix";
     zathura = "/f/zathura";
   };
 

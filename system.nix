@@ -18,13 +18,6 @@
       type = "none";
       options = "bind";
     }
-    {
-      where = "/etc/keyd/default.conf";
-      what = "/f/keyd.ini";
-      wantedBy =  [ "multi-user.target" ];
-      type = "none";
-      options = "bind";
-    }
   ];
 
   environment.systemPackages = with pkgs; [
