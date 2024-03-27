@@ -32,8 +32,8 @@
       options = [ "bind" ];
     };
 
-  fileSystems."/r" =
-    { device = "/nix/res";
+  fileSystems."/n" =
+    { device = "/nix/notes";
       fsType = "none";
       options = [ "bind" ];
     };
