@@ -70,6 +70,7 @@ in {
     "wob/wob.ini" = "/s/dot/wob.ini";
     "mpv/input.conf" = "/s/dot/mpv.conf";
     "niri/config.kdl" = "/s/dot/niri.kdl";
+    "broot/conf.toml" = "/s/dot/broot.toml";
 
     "nushell/history.txt" = "/f/nushell-history.txt";
     fcitx5 = "/f/fcitx5";
