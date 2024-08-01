@@ -7,18 +7,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    niri.url = "github:sodiboo/niri-flake";
-    # niri.inputs.niri-src.url = "github:YaLTeR/niri";
   };
-  outputs = { self, nixpkgs, home-manager, disko, niri}: {
-    nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, home-manager, disko, ... }: {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        niri.nixosModules.niri
         home-manager.nixosModule
         # disko.nixosModule
         # ./disk-config.nix

@@ -21,22 +21,22 @@
     };
 
   fileSystems."/f" =
-    { device = "/nix/persist/";
+    { device = "/nix/files/";
       fsType = "none";
       options = [ "bind" ];
     };
 
-  fileSystems."/s" =
-    { device = "/nix/src";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/s" = {
+    device = "/nix/source/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
 
-  fileSystems."/n" =
-    { device = "/nix/notes";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/n" = {
+    device = "/nix/notes/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/BBE7-1259";

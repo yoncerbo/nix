@@ -1,6 +1,16 @@
-{ inputs, lib, config, pkgs, ... }: {
-  home-manager = {
-    useGlobalPkgs = true; users.m = import ./home.nix;
+      fsType = "none";
+      options = [ "bind" ];
+    };
+    "/s" =  {
+      device = "/nix/source/";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+    "/n" =  {
+      device = "/nix/notes/";
+      fsType = "none";
+      options = [ "bind" ];
+    };
   };
 
   systemd.mounts = [
@@ -18,18 +28,27 @@
       type = "none";
       options = "bind";
     }
+    {
+      where = "/etc/nixos/";
+      what = "/nix/source/nix";
+      wantedBy =  [ "multi-user.target" ];
+      type = "none";
+      options = "bind";
+    }
   ];
 
   environment.systemPackages = with pkgs; [
     neovim
-    keyd
     home-manager
   ];
   environment.defaultPackages = lib.mkForce [];
 
-  programs.sway.enable = true;
-  programs.adb.enable = true;
-  programs.niri.enable = true;
+  programs = {
+    # sway.enable = true;
+    adb.enable = true;
+    niri.enable = true;
+    steam.enable = true;
+  };
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
@@ -39,10 +58,8 @@
     noto-fonts-emoji
   ];
 
-  nixpkgs = {
-    overlays = [];
-    config.allowUnfree = true;
-  };
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [];
 
   nix = {
     settings = {
@@ -56,7 +73,7 @@
   networking = {
     hostName = "nix";
     networkmanager.enable = true;
-    wireless.networks.phone.psk = "12345678";
+    # wireless.networks.phone.psk = "";
   };
 
   boot.loader = {
@@ -68,6 +85,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
@@ -81,10 +99,9 @@
     lxd.enable = false;
   };
 
-  sound.enable = true;
   hardware = {
     pulseaudio.enable = true;
-    bluetooth.enable = true;
+    # bluetooth.enable = true;
   };
   # For bluetooth support
   # hardware.pulseaudio.package = pkgs.pulseaudioFull;
@@ -94,7 +111,7 @@
       extraGroups = [ "wheel" "audio" "video" "uinput" "input" "networkmanager" ];
       isNormalUser = true;
       # sudo mkpasswd -m sha-512 "password"
-      hashedPasswordFile = "/nix/persist/secrets/password";
+      hashedPassword = "$6$/5al5la2aDXWmNiQ$IRfje.1DyTG4RsvhLZSgWz8qlLrN98BvgofrX0WfABZPo6SiOXh5n3JNezltNOBJDYYeJgr9CjyQpZ3Z8BK3R1";
       shell = pkgs.dash;
     };
     mutableUsers = false;
@@ -107,11 +124,26 @@
     };
   };
 
-  programs.zsh.enable = true;
+services.thermald.enable = true;
 
-  services.thermald.enable = true;
+systemd.services.kanata = {
+  wantedBy = [ "multi-user.target" ];
+  serviceConfig = {
+    Type = "notify";
+    ExecStart = "${pkgs.kanata}/bin/kanata --cfg /s/dot/kanata.kbd";
+  };
+};
 
-  users.groups.keyd = {};
+systemd.services.startup = {
+  description = "shell script run on system startup";
+  wantedBy = [ "multi-user.target" ];
+  script = ''
+    chgrp video /sys/class/backlight/amdgpu_bl1/brightness
+    chmod g+w /sys/class/backlight/amdgpu_bl1/brightness
+  '';
+};
+
+  # users.groups.keyd = {};
   # systemd.services.keyd = {
   #   enable = true;
   #   description = "key remapping deamon";
@@ -124,9 +156,10 @@
   #   after = [ "local-fs.target" ];
   # };
 
-  services.xserver.libinput.enable = true;
+  # services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
-  # xdg.portal.wlr.enable = true;
+  xdg.portal.wlr.enable = true;
 
   boot.kernelModules = [ "kvm-amd" ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

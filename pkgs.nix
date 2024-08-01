@@ -1,173 +1,123 @@
 pkgs: with pkgs; [
-home-manager
-# programming languages
+
+  home-manager
 # (python3.withPackages (p: with p; []))
-python3
-rustup
+  python3
+  rustup
 
-# editors
-helix
+  foot
+# alacritty
+# wezterm
 
-# terminals
-foot
-alacritty
-wezterm
+  nushell
+  dash
 
-# shells
-nushell
-dash
+  libsixel
+  carapace
+# pueue
 
-libsixel
-pueue
-
-# webassembly
 # wabt
 # wit-bindgen
 # wasm-tools
 
 # system tools
-coreutils
-binutils
-pciutils
+  coreutils
+  binutils
+  pciutils
 
 # file management
-unzip
-fd
-fzf
-lf
-ripgrep
-broot
-tre
-p7zip
-unar
-zip
+  unzip
+  fd
+  fzf
+  lf
+  ripgrep
+  tree
+# p7zip
 
 # wayland
-wl-clipboard
-wlr-randr
-sway
-hyprland
-# wl
-grim
-slurp
-swaybg
-wob
-wev
+  wl-clipboard
+  wlr-randr
+# sway
+  hyprland
+# dwl
+# grim
+# slurp
 
-# test
-gammastep
-swappy
-flameshot
-wtype
-wlsunset
-swaylock
+  wofi
+  wob
+# albert
+# kickoff
+# nwg-launchers
+# tofi
 
-# menu
-wofi
-rofi-wayland
-bemenu
-
-# status bars
-waybar
-i3status-rust
-rootbar
-yambar
-
-# build systems, compilers
-gcc
-gnumake
-llvm
+  gcc
+  gnumake
+  llvm
 # clang
-autoconf
+  autoconf
 
-# gui
-qutebrowser
-mpv
-zathura
-librewolf
-brave
+  qutebrowser
+  mpv
+  zathura
+  librewolf
 
-swayimg
+  swayimg
 # feh
 # imv
 
 # system monitors
-gtop
-btop
-htop
+# gtop
+  btop
+# htop
 
-# cli utilites
-cmus
-bat
+  cmus
+  bat
 # porsmo
-pulsemixer
-curl
-wget
-man
-pandoc
+  pulsemixer
+  curl
+  wget
+  man
+# pandoc
 # texlive.combined.scheme-minimal
 # imagemagick_light
-# pass
-yt-dlp
-playerctl
-brightnessctl
+  pass
+  yt-dlp
+  playerctl
+  brightnessctl
 # light
-gnupg
+  gnupg
 # groff
 # manim
 
-# typing
 # toipe
 # thokr
 # ttyper
 
-# speed reading
 # speedread
 # uniread
 
-# git
-git
+  git
 # git-remote-gcrypt
 # git-annex
 
 # notifications
-libnotify
-mako
+  libnotify
+  mako
 # dunst
 # fnott
 
-# discord
 # webcord
 # armcord
 
-# image editors
 # krita
 # gimp
 # pinta
 
-ani-cli
-mpg123
-htmlq
+  brave
+  ani-cli
 
-mecab
-tango
-
-cava
-kanata
-rsync
-eww-wayland
-
-nasm
-qemu
-broot
-mold
-gdb
-
-clang-tools
-ccache
-neovide
-clojure
-lua-language-server
-sbcl
+  mpg123
+# htmlq
+  zip
+# unar
 ]
-
