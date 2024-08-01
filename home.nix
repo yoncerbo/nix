@@ -22,7 +22,9 @@ in {
       userName = "meersen";
       userEmail = "<>";
       extraConfig = {
-        initDefaultBranch = "main";
+        init = {
+          defaultBranch = "main";
+        };
       };
     };
   };
@@ -78,5 +80,9 @@ in {
     ".rustup" = "/f/rustup";
     ".cargo" = "/f/cargo";
     ".gnupg" = "/f/gnupg";
+
+    f = "/f";
+    n = "/n";
+    s = "/s";
   };
 }
