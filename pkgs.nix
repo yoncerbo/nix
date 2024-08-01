@@ -1,4 +1,5 @@
 pkgs: with pkgs; [
+  swaybg
   niri
   home-manager
 # (python3.withPackages (p: with p; []))
@@ -56,7 +57,7 @@ pkgs: with pkgs; [
 # clang
   autoconf
 
-  qutebrowser
+# qutebrowser
   mpv
   zathura
   librewolf

@@ -49,18 +49,19 @@ in {
   # xdg.configFile.<name>.onChange
 
   xdg.configFile = mkSymlinks {
-    "nushell/config.nu" = "/f/config.nu";
-    "nushell/env.nu" = "/f/env.nu";
-    "nushell/history.txt" = "/f/nushell-history.txt";
-    "hypr/hyprland.conf" = "/f/hyprland.conf";
-    "sway/config" = "/f/sway";
-    "foot/foot.ini" = "/f/foot.ini";
-    "mako/config" = "/f/mako.ini";
-    "wob/wob.ini" = "/f/wob.ini";
-    "mpv/input.conf" = "/f/mpv.conf";
+    "niri/config.kdl" = "/s/dot/niri.kdl";
+    "nushell/config.nu" = "/s/dot/nu/config.nu";
+    "nushell/env.nu" = "/s/dot/nu/env.nu";
+    "nushell/history.txt" = "/s/dot/nu/history";
+    "hypr/hyprland.conf" = "/s/dot/hyprland.conf";
+    "sway/config" = "/s/dot/sway";
+    "foot/foot.ini" = "/s/dot/foot.ini";
+    "mako/config" = "/s/dot/mako.ini";
+    "wob/wob.ini" = "/s/dot/wob.ini";
+    "mpv/input.conf" = "/s/dot/mpv.conf";
 
-    fcitx5 = "/f/fcitx5";
-    nvim = "/f/nvim-data";
+    fcitx5 = "/ffcitx5";
+    nvim = "/f/nvim";
     cmus = "/f/cmus";
     mozc = "/f/mozc";
     "BraveSoftware/Brave-Browser" = "/f/brave";

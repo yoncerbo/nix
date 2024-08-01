@@ -1,5 +1,6 @@
 { pkgs, lib, config, ... }: {
   home-manager.users.m = ./home.nix;
+  # home-manager.backupFileExtension = "backup";
 
   systemd.mounts = [
     {
