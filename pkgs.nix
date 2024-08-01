@@ -1,5 +1,5 @@
 pkgs: with pkgs; [
-
+  niri
   home-manager
 # (python3.withPackages (p: with p; []))
   python3

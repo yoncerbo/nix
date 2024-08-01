@@ -21,8 +21,9 @@ in {
     git = {
       userName = "meersen";
       userEmail = "<>";
-      # initDefaultBranch = "main";
-      # TODO: add extra config
+      extraConfig = {
+        initDefaultBranch = "main";
+      };
     };
   };
 

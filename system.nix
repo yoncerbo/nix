@@ -1,17 +1,5 @@
-      fsType = "none";
-      options = [ "bind" ];
-    };
-    "/s" =  {
-      device = "/nix/source/";
-      fsType = "none";
-      options = [ "bind" ];
-    };
-    "/n" =  {
-      device = "/nix/notes/";
-      fsType = "none";
-      options = [ "bind" ];
-    };
-  };
+{ pkgs, lib, config, ... }: {
+  home-manager.users.m = ./home.nix;
 
   systemd.mounts = [
     {
@@ -40,13 +28,14 @@
   environment.systemPackages = with pkgs; [
     neovim
     home-manager
+    git
   ];
   environment.defaultPackages = lib.mkForce [];
 
   programs = {
     # sway.enable = true;
     adb.enable = true;
-    niri.enable = true;
+    # niri.enable = true;
     steam.enable = true;
   };
 
@@ -95,8 +84,8 @@
   };
 
   virtualisation = {
-    waydroid.enable = false;
-    lxd.enable = false;
+    # waydroid.enable = true;
+    # lxd.enable = true;
   };
 
   hardware = {
@@ -120,28 +109,19 @@
   security = {
     # sudo.enable = false;
     doas = {
-      enable = true;
+      # enable = true;
     };
   };
 
-services.thermald.enable = true;
+  services.thermald.enable = true;
 
-systemd.services.kanata = {
-  wantedBy = [ "multi-user.target" ];
-  serviceConfig = {
-    Type = "notify";
-    ExecStart = "${pkgs.kanata}/bin/kanata --cfg /s/dot/kanata.kbd";
+  systemd.services.kanata = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "notify";
+      ExecStart = "${pkgs.kanata}/bin/kanata --cfg /s/dot/kanata.kbd";
+    };
   };
-};
-
-systemd.services.startup = {
-  description = "shell script run on system startup";
-  wantedBy = [ "multi-user.target" ];
-  script = ''
-    chgrp video /sys/class/backlight/amdgpu_bl1/brightness
-    chmod g+w /sys/class/backlight/amdgpu_bl1/brightness
-  '';
-};
 
   # users.groups.keyd = {};
   # systemd.services.keyd = {
@@ -156,7 +136,6 @@ systemd.services.startup = {
   #   after = [ "local-fs.target" ];
   # };
 
-  # services.xserver.libinput.enable = true;
   services.libinput.enable = true;
 
   xdg.portal.wlr.enable = true;
