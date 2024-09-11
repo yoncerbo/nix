@@ -74,6 +74,7 @@ in {
     nvim = "/f/nvim";
     nix = "/f/nix";
     zathura = "/f/zathura";
+    Anki2 = "/f/anki";
   };
 
   home.file = mkSymlinks {

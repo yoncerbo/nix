@@ -1,4 +1,5 @@
 pkgs: with pkgs; [
+  anki-bin
   typescript
   bear
   zig
