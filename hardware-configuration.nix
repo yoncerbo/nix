@@ -9,16 +9,16 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "uas" "usb_storage" "sd_mod" ];
 
-  fileSystems."/" =
-    { device = "none";
-      fsType = "tmpfs";
-    };
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/26288def-a47b-47da-b2c8-f906ef9b6e6f";
-      fsType = "ext4";
-      neededForBoot = true;
-    };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/26288def-a47b-47da-b2c8-f906ef9b6e6f";
+    fsType = "ext4";
+    neededForBoot = true;
+  };
 
   fileSystems."/f" =
     { device = "/nix/files/";
@@ -34,6 +34,12 @@
 
   fileSystems."/n" = {
     device = "/nix/notes/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/a" = {
+    device = "/nix/archive/";
     fsType = "none";
     options = [ "bind" ];
   };

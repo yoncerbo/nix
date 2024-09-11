@@ -1,4 +1,11 @@
 pkgs: with pkgs; [
+  typescript
+  bear
+  zig
+  nasm
+  mold
+  peaclock
+  clang-tools
   swaybg
   niri
   home-manager

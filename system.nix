@@ -114,6 +114,38 @@
     };
   };
 
+  security.sudo.extraRules = [{
+    groups = [ "wheel" ];
+    commands = [
+      {
+        command = "/run/current-system/sw/bin/nixos-rebuild switch";
+        options = [ "NOPASSWD" ];
+      }
+    ];
+  }];
+
+  systemd.services.onstartup = {
+    description = "runs on system startup";
+    wantedBy = [ "multi-user.target" ];
+    script = ''
+    ${pkgs.brightnessctl}/bin/brightnessctl set $(cat /f/brightness) && echo "ok" > /f/startup
+    '';
+  };
+
+  systemd.services.onshutdown = {
+    description = "runs before system shutdown";
+    wantedBy = [ "shutdown.target" ];
+    before = [ "shutdown.target" ];
+    script = ''
+    echo "hello" > /f/shutdown
+    # ${pkgs.brightnessctl}/bin/brightnessctl get > /f/brightness
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      TimeoutStartSec = 0;
+    };
+  };
+
   services.thermald.enable = true;
 
   systemd.services.kanata = {

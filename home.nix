@@ -62,7 +62,7 @@ in {
     "wob/wob.ini" = "/s/dot/wob.ini";
     "mpv/input.conf" = "/s/dot/mpv.conf";
 
-    fcitx5 = "/ffcitx5";
+    fcitx5 = "/f/fcitx5";
     nvim = "/f/nvim";
     cmus = "/f/cmus";
     mozc = "/f/mozc";
@@ -80,9 +80,14 @@ in {
     ".rustup" = "/f/rustup";
     ".cargo" = "/f/cargo";
     ".gnupg" = "/f/gnupg";
+    ".peaclock/config" = "/s/dot/peaclock";
+    ".android" = "/f/android";
+
+    ".cache/mpv" = "/f/mpv";
 
     f = "/f";
     n = "/n";
     s = "/s";
+    a = "/a";
   };
 }
