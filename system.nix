@@ -91,7 +91,7 @@
 
   hardware = {
     pulseaudio.enable = true;
-    # bluetooth.enable = true;
+    bluetooth.enable = true;
   };
   # For bluetooth support
   # hardware.pulseaudio.package = pkgs.pulseaudioFull;
@@ -146,7 +146,9 @@
     };
   };
 
+  powerManagement.enable = true;
   services.thermald.enable = true;
+  services.tlp.enable = true;
 
   systemd.services.kanata = {
     wantedBy = [ "multi-user.target" ];
