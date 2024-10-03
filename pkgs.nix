@@ -1,4 +1,5 @@
 pkgs: with pkgs; [
+  restic
   anki-bin
   peaclock
   swaybg

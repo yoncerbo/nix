@@ -124,27 +124,27 @@
     ];
   }];
 
-  systemd.services.onstartup = {
-    description = "runs on system startup";
-    wantedBy = [ "multi-user.target" ];
-    script = ''
-    ${pkgs.brightnessctl}/bin/brightnessctl set $(cat /f/brightness) && echo "ok" > /f/startup
-    '';
-  };
+  # systemd.services.onstartup = {
+  #   description = "runs on system startup";
+  #   wantedBy = [ "multi-user.target" ];
+  #   script = ''
+  #   ${pkgs.brightnessctl}/bin/brightnessctl set $(cat /f/brightness) && echo "ok" > /f/startup
+  #   '';
+  # };
 
-  systemd.services.onshutdown = {
-    description = "runs before system shutdown";
-    wantedBy = [ "shutdown.target" ];
-    before = [ "shutdown.target" ];
-    script = ''
-    echo "hello" > /f/shutdown
-    # ${pkgs.brightnessctl}/bin/brightnessctl get > /f/brightness
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      TimeoutStartSec = 0;
-    };
-  };
+  # systemd.services.onshutdown = {
+  #   description = "runs before system shutdown";
+  #   wantedBy = [ "shutdown.target" ];
+  #   before = [ "shutdown.target" ];
+  #   script = ''
+  #   echo "hello" > /f/shutdown
+  #   # ${pkgs.brightnessctl}/bin/brightnessctl get > /f/brightness
+  #   '';
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     TimeoutStartSec = 0;
+  #   };
+  # };
 
   powerManagement.enable = true;
   services.thermald.enable = true;
