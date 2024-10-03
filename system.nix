@@ -37,7 +37,8 @@
     # sway.enable = true;
     adb.enable = true;
     # niri.enable = true;
-    steam.enable = true;
+    # steam.enable = true;
+    gnupg.agent.enable = true;
   };
 
   fonts.packages = with pkgs; [
@@ -64,7 +65,32 @@
     hostName = "nix";
     networkmanager.enable = true;
     # wireless.networks.phone.psk = "";
+    # Used for local server
+    firewall.allowedUDPPortRanges= [
+      { from = 8000; to = 8010; }
+    ];
   };
+
+  # services.radicale = {
+  #   enable = true;
+  #   settings = {
+  #     auth.type = "none";
+  #     server.hosts = [ ];
+  #     storage.filesystem_folder = "/f/radicale/";
+  #   };
+  # };
+
+  # services.restic.backups.gdrive = {
+  #   user = "m";
+  #   repository = "rclone:gdrive:/n";
+  #   initialize = true;
+  #   passwordFile = "/f/secrets/gdrive";
+  #   paths = [ "/n" ];
+  #   timerConfig = {
+  #     OnCalendar = "daily";
+  #     Persistent = "ture";
+  #   };
+  # };
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -150,13 +176,13 @@
   services.thermald.enable = true;
   services.tlp.enable = true;
 
-  systemd.services.kanata = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "notify";
-      ExecStart = "${pkgs.kanata}/bin/kanata --cfg /s/dot/kanata.kbd";
-    };
-  };
+  # systemd.services.kanata = {
+  #   wantedBy = [ "multi-user.target" ];
+  #   serviceConfig = {
+  #     Type = "notify";
+  #     ExecStart = "${pkgs.kanata}/bin/kanata --cfg /s/dot/kanata.kbd";
+  #   };
+  # };
 
   # users.groups.keyd = {};
   # systemd.services.keyd = {

@@ -1,4 +1,6 @@
 pkgs: with pkgs; [
+  restic
+  python3
   anki-bin
   peaclock
   swaybg
@@ -34,7 +36,6 @@ pkgs: with pkgs; [
   yt-dlp
   playerctl
   brightnessctl
-  gnupg
   zip
   unar
   libsixel
@@ -43,6 +44,7 @@ pkgs: with pkgs; [
   pciutils
   unzip
   fd
+  sd
   fzf
   lf
   ripgrep
@@ -50,6 +52,7 @@ pkgs: with pkgs; [
   p7zip
   wl-clipboard
   bluez
+  pinentry
 
   swayimg
   feh

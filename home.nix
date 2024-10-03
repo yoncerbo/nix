@@ -19,6 +19,7 @@ in {
       vimAlias = true;
     };
     git = {
+      enable = true;
       userName = "meersen";
       userEmail = "<>";
       extraConfig = {
@@ -83,6 +84,7 @@ in {
     ".gnupg" = "/f/gnupg";
     ".peaclock/config" = "/s/dot/peaclock";
     ".android" = "/f/android";
+    ".password-store" = "/f/pass";
 
     ".cache/mpv" = "/f/mpv";
 
