@@ -1,26 +1,33 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, zen-browser, inputs, ... }: {
   home-manager.users.m = ./home.nix;
   # home-manager.backupFileExtension = "backup";
 
   systemd.mounts = [
     {
       where = "/etc/NetworkManager/system-connections";
-      what = "/f/network-manager";
+      what = "/a/network-manager";
       wantedBy = [ "multi-user.target" ];
       type = "none";
       options = "bind";
     }
     {
       where = "/etc/machine-id";
-      what = "/f/machine-id";
+      what = "/a/machine-id";
       wantedBy =  [ "multi-user.target" ];
       type = "none";
       options = "bind";
     }
     {
       where = "/etc/nixos/";
-      what = "/nix/source/nix";
+      what = "/d/nix";
       wantedBy =  [ "multi-user.target" ];
+      type = "none";
+      options = "bind";
+    }
+    {
+      where = "/var/lib/systemd";
+      what = "/a/systemd/";
+      wantedBy = [ "boot.target" ];
       type = "none";
       options = "bind";
     }
@@ -90,6 +97,7 @@
   };
 
   hardware = {
+    alsa.enablePersistence = true;
     pulseaudio.enable = true;
     bluetooth.enable = true;
   };
@@ -102,6 +110,9 @@
       isNormalUser = true;
       # sudo mkpasswd -m sha-512 "password"
       hashedPassword = "$6$/5al5la2aDXWmNiQ$IRfje.1DyTG4RsvhLZSgWz8qlLrN98BvgofrX0WfABZPo6SiOXh5n3JNezltNOBJDYYeJgr9CjyQpZ3Z8BK3R1";
+
+      # empty password
+      # hashedPassword = "$6$bjLWirn7JLJbMKso$DVheozeraNVCbFR6iSwMbx3214od0bYrSuKYRSOZ0X/B4MGGS/0vTJWILBPJ/dPDF7V50/joyZ1n8ira1Vl36.";
       shell = pkgs.dash;
     };
     mutableUsers = false;
@@ -124,13 +135,6 @@
     ];
   }];
 
-  # systemd.services.onstartup = {
-  #   description = "runs on system startup";
-  #   wantedBy = [ "multi-user.target" ];
-  #   script = ''
-  #   ${pkgs.brightnessctl}/bin/brightnessctl set $(cat /f/brightness) && echo "ok" > /f/startup
-  #   '';
-  # };
 
   # systemd.services.onshutdown = {
   #   description = "runs before system shutdown";
@@ -150,13 +154,23 @@
   services.thermald.enable = true;
   services.tlp.enable = true;
 
-  systemd.services.kanata = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "notify";
-      ExecStart = "${pkgs.kanata}/bin/kanata --cfg /s/dot/kanata.kbd";
-    };
+  services.kanata = {
+    enable = true;
+    keyboards.main.extraDefCfg = ''
+      movemouse-inherit-accel-state yes
+      log-layer-changes no
+      process-unmapped-keys yes
+    '';
+    keyboards.main.config = builtins.readFile ./kanata.kbd;
   };
+
+  # systemd.services.kanata = {
+  #   wantedBy = [ "multi-user.target" ];
+  #   serviceConfig = {
+  #     Type = "notify";
+  #     ExecStart = "${pkgs.kanata}/bin/kanata --cfg /d/kanata.kbd";
+  #   };
+  # };
 
   # users.groups.keyd = {};
   # systemd.services.keyd = {

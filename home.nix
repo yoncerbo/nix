@@ -28,6 +28,31 @@ in {
         };
       };
     };
+    tmux = {
+      enable = true;
+      plugins = with pkgs.tmuxPlugins; [
+        resurrect
+      ];
+      extraConfig = ''
+        source-file /a/tmux/tmux.conf
+        unbind C-a
+        set-option -g prefix C-a
+
+        # Fix for wrong colors
+        set-option -ga terminal-overrides ",xterm-256color:Tc
+
+        # Fix escape delay
+        set -sg escape-time 5
+
+        set -g status-style "bg=black"
+        set -g status-style "fg=white"
+
+        set -g default-shell nu
+
+        set -g @resurrect-strategy-nvim "session"
+        set -g @resurrect-strategy-vim "session"
+      '';
+    };
   };
 
   manual.html.enable = true;
@@ -52,45 +77,49 @@ in {
   # xdg.configFile.<name>.onChange
 
   xdg.configFile = mkSymlinks {
-    "niri/config.kdl" = "/s/dot/niri.kdl";
-    "nushell/config.nu" = "/s/dot/nu/config.nu";
-    "nushell/env.nu" = "/s/dot/nu/env.nu";
-    "nushell/history.txt" = "/s/dot/nu/history";
-    "hypr/hyprland.conf" = "/s/dot/hyprland.conf";
-    "sway/config" = "/s/dot/sway";
-    "foot/foot.ini" = "/s/dot/foot.ini";
-    "mako/config" = "/s/dot/mako.ini";
-    "wob/wob.ini" = "/s/dot/wob.ini";
-    "mpv/input.conf" = "/s/dot/mpv.conf";
+    "niri/config.kdl" = "/d/niri.kdl";
+    "nushell/config.nu" = "/d/config.nu";
+    "nushell/env.nu" = "/d/env.nu";
+    "nushell/history.txt" = "/a/nu-history";
+    "hypr/hyprland.conf" = "/d/hyprland.conf";
+    "sway/config" = "/d/sway";
+    "foot/foot.ini" = "/d/foot.ini";
+    "mako/config" = "/d/mako.ini";
+    "wob/wob.ini" = "/d/wob.ini";
+    "mpv/input.conf" = "/d/mpv.conf";
 
-    fcitx5 = "/f/fcitx5";
-    nvim = "/f/nvim";
-    cmus = "/f/cmus";
-    mozc = "/f/mozc";
-    "BraveSoftware/Brave-Browser" = "/f/brave";
+    rclone = "/a/rclone";
+    fcitx5 = "/a/fcitx5";
+    nvim = "/a/nvim";
+    cmus = "/a/cmus";
+    mozc = "/a/mozc";
+    "BraveSoftware/Brave-Browser" = "/a/brave";
   };
 
   xdg.dataFile = mkSymlinks {
-    fcitx5 = "/f/fcitx5";
-    nvim = "/f/nvim";
-    nix = "/f/nix";
-    zathura = "/f/zathura";
-    Anki2 = "/f/anki";
+    fcitx5 = "/a/fcitx5";
+    nvim = "/a/nvim";
+    nix = "/a/nix";
+    zathura = "/a/zathura";
+    Anki2 = "/a/anki";
   };
 
   home.file = mkSymlinks {
-    ".rustup" = "/f/rustup";
-    ".cargo" = "/f/cargo";
-    ".gnupg" = "/f/gnupg";
-    ".peaclock/config" = "/s/dot/peaclock";
-    ".android" = "/f/android";
-    ".password-store" = "/f/pass";
+    ".peaclock/config" = "/d/peaclock";
 
-    ".cache/mpv" = "/f/mpv";
+    ".rustup" = "/a/rustup";
+    ".cargo" = "/a/cargo";
+    ".gnupg" = "/a/gnupg";
+    ".android" = "/a/android";
+    ".password-store" = "/a/pass";
+
+    ".cache/mpv" = "/a/mpv";
 
     f = "/f";
     n = "/n";
     s = "/s";
     a = "/a";
+    d = "/d";
+    m = "/m";
   };
 }

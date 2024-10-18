@@ -39,7 +39,19 @@
   };
 
   fileSystems."/a" = {
-    device = "/nix/archive/";
+    device = "/nix/app/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/d" = {
+    device = "/nix/dot/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/m" = {
+    device = "/nix/media/";
     fsType = "none";
     options = [ "bind" ];
   };

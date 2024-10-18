@@ -1,0 +1,62 @@
+(defsrc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer main
+  tab  q    w    e    @r   t    XX   y    @u   i    o    p    bspc
+  esc  @a   @s   @d   @f   @g   XX   @h   @j   @k   @l   @;   ret
+  @cw  z    x    c    v    b    XX   n    m    ,    .    /
+  XX   XX   @nav         spc              @sym XX   XX
+)
+
+(deflayer normal
+  tab  q    w    e    @r   t    XX   y    @u   i    o    p    bspc
+  esc  a   s   d   f   g   XX   h   j   k   l   ;   ret
+  @cw  z    x    c    v    b    XX   n    m    ,    .    /
+  XX   @main @nav         spc              @sym @main XX
+)
+
+(deflayer nav
+  mbck mfwd mmid mrgt mlft t    XX   y    @u   i    o    p    bspc
+  esc  a    s    d    f    g    XX   left down up   rght ;    ret
+  @cw  lrld lrpv lrnx v    b    XX   n    m    ,    .    /
+  XX   @main @nav         spc              @sym @main XX
+)
+
+(deflayer sym
+  grv   1    2    3    4    5    XX   6    7     8    9    0    bspc
+  S-grv S-1  S-2  S-3  S-4  S-5  XX   =    S-9   S-[  [    -    '
+  S-'   S-6  S-7  S-8  \    S-\  XX   +    S-0   S-]  ]    S--
+  XX    XX   (layer-switch normal) spc              XX XX   XX
+)
+
+(defvar
+  tt 100
+  ht 200
+)
+
+(defalias
+  cw (caps-word 500)
+  sym (one-shot 300 (layer-while-held sym))
+  nav (one-shot 300 (layer-while-held nav))
+
+  main (layer-switch main)
+
+  a (tap-hold $tt $ht a lalt)
+  s (tap-hold $tt $ht s lctl)
+  d (tap-hold $tt $ht d lsft)
+  f (tap-hold $tt $ht f lmet)
+  g (tap-hold $tt $ht g (layer-while-held normal))
+
+  h (tap-hold $tt $ht h (layer-while-held normal))
+  j (tap-hold $tt $ht j rmet)
+  k (tap-hold $tt $ht k rsft)
+  l (tap-hold $tt $ht l rctl)
+  ; (tap-hold $tt $ht ; lalt)
+
+  r (tap-hold $tt $ht r ralt)
+  u (tap-hold $tt $ht u ralt)
+)

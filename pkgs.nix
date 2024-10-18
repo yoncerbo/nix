@@ -1,5 +1,6 @@
 pkgs: with pkgs; [
   restic
+  rclone
   anki-bin
   peaclock
   swaybg
@@ -23,6 +24,7 @@ pkgs: with pkgs; [
 # qutebrowser
   librewolf
   ani-cli
+  sd
 
   # Command line utils
   cmus
@@ -51,11 +53,30 @@ pkgs: with pkgs; [
   p7zip
   wl-clipboard
   bluez
+  pinentry-qt
+  rsync
 
   swayimg
   feh
   imv
 
+  tmux
+  tmuxPlugins.resurrect
+
   # Misc
   speedread
+
+  # Vim stuff
+  gcc
+
+  # Language servers
+  markdown-oxide
+  clang-tools
+  nodePackages.typescript-language-server
+  rust-analyzer
+
+  kdePackages.qtwayland
+  kdePackages.qtsvg
+  dolphin
+  xdg-utils
 ]
