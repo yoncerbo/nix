@@ -15,8 +15,15 @@
 (deflayer normal
   tab  q    w    e    @r   t    XX   y    @u   i    o    p    bspc
   esc  a   s   d   f   g   XX   h   j   k   l   ;   ret
-  @cw  z    x    c    v    b    XX   n    m    ,    .    /
-  XX   @main @nav         spc              @sym @main XX
+  lsft  z    x    c    v    b    XX   n    m    ,    .    /
+  @main   lmet @nav        spc              @sym rmet XX
+)
+
+(deflayer gaming
+  tab  q    w    e    @r   t    XX   y    @u   i    o    p    bspc
+  esc  a   s   d   f   g   XX   h   mlft mrgt mmid   ;   ret
+  lsft  z    x    c    v    b    XX   n    m    ,    .    /
+  @main   lmet @nav        spc              @sym rmet XX
 )
 
 (deflayer nav
@@ -30,7 +37,7 @@
   grv   1    2    3    4    5    XX   6    7     8    9    0    bspc
   S-grv S-1  S-2  S-3  S-4  S-5  XX   =    S-9   S-[  [    -    '
   S-'   S-6  S-7  S-8  \    S-\  XX   +    S-0   S-]  ]    S--
-  XX    XX   (layer-switch normal) spc              XX XX   XX
+  XX    XX   (layer-switch gaming) spc              XX XX   XX
 )
 
 (defvar

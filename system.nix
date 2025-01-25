@@ -37,6 +37,13 @@
     neovim
     home-manager
     git
+
+    (steam.override { extraPkgs = pkgs: [
+      zlib
+      gcc
+      libsForQt5.qtbase
+      libsForQt5.qtwayland
+    ]; }).run
   ];
   environment.defaultPackages = lib.mkForce [];
 
@@ -45,14 +52,28 @@
     adb.enable = true;
     # niri.enable = true;
     steam.enable = true;
+    # hyprland.enable = true;
+    nix-ld.enable = true;
+    nix-ld.libraries = with pkgs; [
+      zlib
+      gcc
+      libsForQt5.qtbase
+      libsForQt5.qtwayland
+    ];
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
     fira-code
     fira-code-symbols
-    noto-fonts-cjk
     noto-fonts-emoji
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+
+    liberation_ttf
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -78,6 +99,8 @@
     efi.canTouchEfiVariables = true;
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   time.timeZone = "Poland";
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -97,7 +120,7 @@
   };
 
   hardware = {
-    alsa.enablePersistence = true;
+    # alsa.enablePersistence = true;
     pulseaudio.enable = true;
     bluetooth.enable = true;
   };
@@ -193,6 +216,8 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.useDHCP = lib.mkDefault true;
+
+  networking.firewall.enable = false;
 
   system.stateVersion = "23.11";
 }

@@ -60,8 +60,11 @@ pkgs: with pkgs; [
   feh
   imv
 
-  tmux
-  tmuxPlugins.resurrect
+  xwayland
+  # minetest
+
+  # tmux
+  # tmuxPlugins.resurrect
 
   # Misc
   speedread
@@ -77,6 +80,12 @@ pkgs: with pkgs; [
 
   kdePackages.qtwayland
   kdePackages.qtsvg
-  dolphin
   xdg-utils
+
+  python3
+  nodePackages.live-server
+  obs-studio
+  river
+
+  kanata
 ]

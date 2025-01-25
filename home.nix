@@ -87,6 +87,7 @@ in {
     "mako/config" = "/d/mako.ini";
     "wob/wob.ini" = "/d/wob.ini";
     "mpv/input.conf" = "/d/mpv.conf";
+    "river/init" = "/d/river.sh";
 
     rclone = "/a/rclone";
     fcitx5 = "/a/fcitx5";
@@ -94,6 +95,7 @@ in {
     cmus = "/a/cmus";
     mozc = "/a/mozc";
     "BraveSoftware/Brave-Browser" = "/a/brave";
+    obs-studio = "/a/obs";
   };
 
   xdg.dataFile = mkSymlinks {
@@ -102,6 +104,7 @@ in {
     nix = "/a/nix";
     zathura = "/a/zathura";
     Anki2 = "/a/anki";
+    Steam = "/a/steam-data";
   };
 
   home.file = mkSymlinks {
@@ -112,6 +115,8 @@ in {
     ".gnupg" = "/a/gnupg";
     ".android" = "/a/android";
     ".password-store" = "/a/pass";
+    ".minetest" = "/a/minetest/";
+    ".steam" = "/a/steam/";
 
     ".cache/mpv" = "/a/mpv";
 
