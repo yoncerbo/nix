@@ -1,6 +1,60 @@
 { pkgs, lib, config, zen-browser, inputs, ... }: {
   home-manager.users.m = ./home.nix;
+  home-manager.backupFileExtension = "backup";
   # home-manager.backupFileExtension = "backup";
+
+  # https://discourse.nixos.org/t/tutorial-for-setting-up-the-lamp-stack-on-a-nixos-server/12508/4
+  services.httpd = {
+    enable = true;
+    adminAddr = "meersehn@proton.me";
+    enablePHP = true;
+    virtualHosts.localhost.documentRoot = "/f/wordpress";
+    extraConfig = ''
+      DirectoryIndex index.html index.php
+    '';
+  };
+
+  # https://wiki.nixos.org/wiki/PHP
+  services.httpd.phpPackage = pkgs.php.buildEnv {
+    extraConfig = ''
+      upload_max_filesize=1G
+      post_max_size=1G
+    '';
+  };
+
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+    dataDir = "/a/mysql";
+  };
+
+  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.daemon.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
+
+  # services.nginx.enable = true;
+  # services.nginx.virtualHosts.localhost = {
+  #   addSSL = false;
+  #   root = "/f/wordpress";
+  #   locations."~ \\.php$".extraConfig = ''
+  #     fastcgi_pass unix:${config.services.phpfpm.pools.mypool.socket};
+  #     fastcgi_index index.php;
+  #   '';
+  # };
+
+  # services.phpfpm.pools.mypool = {
+  #   user = "nobody";
+  #   settings = {
+  #     "pm" = "dynamic";
+  #     "listen.owner" = config.services.nginx.user;
+  #     "pm.max_children" = 5;
+  #     "pm.start_servers" = 2;
+  #     "pm.min_spare_servers" = 1;
+  #     "pm.max_spare_servers" = 3;
+  #     "pm.max_requests" = 500;
+  #   };
+  # };
 
   systemd.mounts = [
     {
@@ -49,6 +103,7 @@
 
   programs = {
     # sway.enable = true;
+    thunar.enable = true;
     adb.enable = true;
     # niri.enable = true;
     steam.enable = true;
@@ -76,7 +131,6 @@
     proggyfonts
   ];
 
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [];
 
   nix = {
@@ -103,6 +157,12 @@
 
   time.timeZone = "Poland";
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.supportedLocales = [
+    "C.UTF-8/UTF-8"
+    "en_US.UTF-8/UTF-8"
+    "ja_JP.UTF-8/UTF-8"
+    "pl_PL.UTF-8/UTF-8"
+  ];
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -115,7 +175,7 @@
   };
 
   virtualisation = {
-    # waydroid.enable = true;
+    waydroid.enable = true;
     # lxd.enable = true;
   };
 
@@ -173,19 +233,22 @@
   #   };
   # };
 
+  services.libinput.enable = true;
+
   powerManagement.enable = true;
   services.thermald.enable = true;
   services.tlp.enable = true;
 
-  services.kanata = {
-    enable = true;
-    keyboards.main.extraDefCfg = ''
-      movemouse-inherit-accel-state yes
-      log-layer-changes no
-      process-unmapped-keys yes
-    '';
-    keyboards.main.config = builtins.readFile ./kanata.kbd;
-  };
+  # services.kanata = {
+  #   enable = true;
+  #   keyboards.main.extraDefCfg = ''
+  #     movemouse-inherit-accel-state yes
+  #     log-layer-changes no
+  #     process-unmapped-keys yes
+  #     linux-dev /dev/input/event0:/dev/input/event11
+  #   '';
+  #   keyboards.main.config = builtins.readFile ./kanata.kbd;
+  # };
 
   # systemd.services.kanata = {
   #   wantedBy = [ "multi-user.target" ];
@@ -208,8 +271,6 @@
   #   after = [ "local-fs.target" ];
   # };
 
-  services.libinput.enable = true;
-
   xdg.portal.wlr.enable = true;
 
   boot.kernelModules = [ "kvm-amd" ];
@@ -217,6 +278,7 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.useDHCP = lib.mkDefault true;
 
+  # networking.firewall.allowedTCPPorts = [ 8080 80 443 ];
   networking.firewall.enable = false;
 
   system.stateVersion = "23.11";

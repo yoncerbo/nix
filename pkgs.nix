@@ -42,7 +42,7 @@ pkgs: with pkgs; [
   unar
   libsixel
   coreutils
-  binutils
+  # binutils
   pciutils
   unzip
   fd
@@ -70,10 +70,12 @@ pkgs: with pkgs; [
   speedread
 
   # Vim stuff
-  gcc
+  # gcc
+  bear
 
   # Language servers
   markdown-oxide
+  clang
   clang-tools
   nodePackages.typescript-language-server
   rust-analyzer
@@ -82,10 +84,44 @@ pkgs: with pkgs; [
   kdePackages.qtsvg
   xdg-utils
 
-  python3
+  (python3.withPackages (pkgs: with pkgs; [
+    myhdl
+  ]))
   nodePackages.live-server
   obs-studio
   river
 
   kanata
+  kdePackages.kdialog
+  wp-cli
+  nasm
+  # ld.lld
+  qemu
+  pamixer
+  gnumake
+
+  man-pages
+  man-pages-posix
+
+  llvm
+  lld
+  iverilog
+
+  prismlauncher
+  gimp
+  krita
+  glslviewer
+  osu-lazer
+  kanata
+
+  rnote
+  saber
+  fuzzel
+
+  # winetricks
+  # wine-wayland
+  # wine
+  wineWowPackages.stable
+  samba
+  xorg.xlsclients
 ]

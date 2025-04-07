@@ -2,42 +2,48 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
+  lctl lmet lalt           spc            ralt rctl
+  mfwd mbck
 )
 
 (deflayer main
-  tab  q    w    e    @r   t    XX   y    @u   i    o    p    bspc
-  esc  @a   @s   @d   @f   @g   XX   @h   @j   @k   @l   @;   ret
-  @cw  z    x    c    v    b    XX   n    m    ,    .    /
-  XX   XX   @nav         spc              @sym XX   XX
+  tab  q    w    e    @r   t    y    @u   i    o    p    bspc  XX
+  esc  @a   @s   @d   @f   @g   @h   @j   @k   @l   @;   '     ret
+  @cw  z    x    c    v    b    n    m    ,    .    /    XX
+  XX   XX   @sec         spc              @tet @gaming
+  right left
 )
 
 (deflayer normal
-  tab  q    w    e    @r   t    XX   y    @u   i    o    p    bspc
-  esc  a   s   d   f   g   XX   h   j   k   l   ;   ret
-  lsft  z    x    c    v    b    XX   n    m    ,    .    /
-  @main   lmet @nav        spc              @sym rmet XX
+  tab  q    w    e     r   t    y     u   i    o    p    bspc XX
+  esc  a   s   d   f   g   h   j   k   l   ;   '  ret
+  lsft  z    x    c    v    b    n    m    ,    .    / rsft
+  @main   lmet @sec        spc              @tet rctl
+  mfwd mbck
 )
 
 (deflayer gaming
-  tab  q    w    e    @r   t    XX   y    @u   i    o    p    bspc
-  esc  a   s   d   f   g   XX   h   mlft mrgt mmid   ;   ret
-  lsft  z    x    c    v    b    XX   n    m    ,    .    /
-  @main   lmet @nav        spc              @sym rmet XX
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]
+  esc a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt @main
+  mfwd mbck
 )
 
-(deflayer nav
-  mbck mfwd mmid mrgt mlft t    XX   y    @u   i    o    p    bspc
-  esc  a    s    d    f    g    XX   left down up   rght ;    ret
-  @cw  lrld lrpv lrnx v    b    XX   n    m    ,    .    /
-  XX   @main @nav         spc              @sym @main XX
+(deflayer sec
+  mbck mfwd mmid mrgt mlft t    6    7     8    9    0    bspc XX
+  esc  a    s    d    f    g =    S-9   S-[  [    -    S-' ret
+  @cw  lrld lrpv lrnx v    b +    S-0   S-]  ]    S-- rsft
+  XX   XX   XX            spc              XX XX
+  mfwd mbck
 )
 
-(deflayer sym
-  grv   1    2    3    4    5    XX   6    7     8    9    0    bspc
-  S-grv S-1  S-2  S-3  S-4  S-5  XX   =    S-9   S-[  [    -    '
-  S-'   S-6  S-7  S-8  \    S-\  XX   +    S-0   S-]  ]    S--
-  XX    XX   (layer-switch gaming) spc              XX XX   XX
+(deflayer tet
+  grv   1    2    3    4    5    y    @u   i    o    p    bspc XX
+  S-grv S-1  S-2  S-3  S-4  S-5  left down up   rght ;    '    ret
+  caps  S-6  S-7  S-8  \    S-\  n    m    ,    .    /    rsft
+  XX    XX   XX           spc              XX XX
+  mfwd mbck
 )
 
 (defvar
@@ -46,11 +52,12 @@
 )
 
 (defalias
-  cw (caps-word 500)
-  sym (one-shot 300 (layer-while-held sym))
-  nav (one-shot 300 (layer-while-held nav))
+  cw (caps-word 1000)
+  tet (one-shot 300 (layer-while-held tet))
+  sec (one-shot 300 (layer-while-held sec))
 
   main (layer-switch main)
+  gaming (layer-switch gaming)
 
   a (tap-hold $tt $ht a lalt)
   s (tap-hold $tt $ht s lctl)

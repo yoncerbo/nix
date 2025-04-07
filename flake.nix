@@ -8,16 +8,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    # osu.url = "github:notgne2/osu-nixos";
+    # osu.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { self, nixpkgs, home-manager, zen-browser, ... }: {
     nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        home-manager.nixosModule
+        (import "${home-manager}/nixos")
+        # home-manager.nixosModule
         ./system.nix
         ./hardware-configuration.nix
         {
           environment.systemPackages = [zen-browser.packages.x86_64-linux.default];
+          # nixpkgs.overlays = [ osu.overlay ];
         }
       ];
     };

@@ -4,6 +4,7 @@ let
     source = config.lib.file.mkOutOfStoreSymlink v;
   }) set;
 in {
+  nixpkgs.config.allowUnfree = true;
 
   home = {
     username = "m";
@@ -96,6 +97,7 @@ in {
     mozc = "/a/mozc";
     "BraveSoftware/Brave-Browser" = "/a/brave";
     obs-studio = "/a/obs";
+    OpenTabletDriver = "/a/otd";
   };
 
   xdg.dataFile = mkSymlinks {
@@ -105,6 +107,11 @@ in {
     zathura = "/a/zathura";
     Anki2 = "/a/anki";
     Steam = "/a/steam-data";
+    PrismLauncher = "/a/prism";
+    osu = "/a/osu/";
+
+    "applications/wine" = "/a/wine/apps/";
+    desktop-directories = "/a/wine/desktop-directories/";
   };
 
   home.file = mkSymlinks {
@@ -117,6 +124,7 @@ in {
     ".password-store" = "/a/pass";
     ".minetest" = "/a/minetest/";
     ".steam" = "/a/steam/";
+    ".wine" = "/a/wine2";
 
     ".cache/mpv" = "/a/mpv";
 
@@ -126,5 +134,32 @@ in {
     a = "/a";
     d = "/d";
     m = "/m";
+  };
+
+  xdg.mimeApps.enable = true;
+
+  xdg.desktopEntries.textractor = {
+    name = "Textractor";
+    exec = "env WINEPREFIX=/home/m/.wine wine /home/m/.wine/drive_c/users/m/Desktop/Textractor/x86/Textractor.exe";
+    # path = "~/.wine/drive_c/users/m/Desktop/Textractor/";
+    type = "Application";
+  };
+
+  xdg.desktopEntries.unred-night = {
+    name = "Unred Night";
+    exec = "env WINEPREFIX=/home/m/.wine LANG=ja_JP.UTF-8 wine /m/vn/unred-night/URN.exe";
+    # path = "/m/vn/unred-night/";
+    type = "Application";
+  };
+
+  xdg.mimeApps.defaultApplications = {
+    "application/pdf" = "org.pwmt.zathura.desktop";
+  };
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = [ "gtk" ];
   };
 }
