@@ -239,16 +239,15 @@
   services.thermald.enable = true;
   services.tlp.enable = true;
 
-  # services.kanata = {
-  #   enable = true;
-  #   keyboards.main.extraDefCfg = ''
-  #     movemouse-inherit-accel-state yes
-  #     log-layer-changes no
-  #     process-unmapped-keys yes
-  #     linux-dev /dev/input/event0:/dev/input/event11
-  #   '';
-  #   keyboards.main.config = builtins.readFile ./kanata.kbd;
-  # };
+  services.kanata = {
+    enable = true;
+    keyboards.main.extraDefCfg = ''
+      movemouse-inherit-accel-state yes
+      log-layer-changes no
+    '';
+    keyboards.main.devices = [ "/dev/input/event0" "/dev/input/by-id/usb-30fa_USB_Optical_Mouse-event-mouse" ];
+    keyboards.main.config = builtins.readFile ./kanata.kbd;
+  };
 
   # systemd.services.kanata = {
   #   wantedBy = [ "multi-user.target" ];
