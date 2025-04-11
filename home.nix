@@ -24,9 +24,8 @@ in {
       userName = "meersen";
       userEmail = "<>";
       extraConfig = {
-        init = {
-          defaultBranch = "main";
-        };
+        init.defaultBranch = "main";
+        credential.helper = "store";
       };
     };
     tmux = {
