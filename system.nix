@@ -4,29 +4,29 @@
   # home-manager.backupFileExtension = "backup";
 
   # https://discourse.nixos.org/t/tutorial-for-setting-up-the-lamp-stack-on-a-nixos-server/12508/4
-  services.httpd = {
-    enable = true;
-    adminAddr = "meersehn@proton.me";
-    enablePHP = true;
-    virtualHosts.localhost.documentRoot = "/f/wordpress";
-    extraConfig = ''
-      DirectoryIndex index.html index.php
-    '';
-  };
+  # services.httpd = {
+  #   enable = true;
+  #   adminAddr = "meersehn@proton.me";
+  #   enablePHP = true;
+  #   virtualHosts.localhost.documentRoot = "/f/wordpress";
+  #   extraConfig = ''
+  #     DirectoryIndex index.html index.php
+  #   '';
+  # };
 
   # https://wiki.nixos.org/wiki/PHP
-  services.httpd.phpPackage = pkgs.php.buildEnv {
-    extraConfig = ''
-      upload_max_filesize=1G
-      post_max_size=1G
-    '';
-  };
+  # services.httpd.phpPackage = pkgs.php.buildEnv {
+  #   extraConfig = ''
+  #     upload_max_filesize=1G
+  #     post_max_size=1G
+  #   '';
+  # };
 
-  services.mysql = {
-    enable = true;
-    package = pkgs.mariadb;
-    dataDir = "/a/mysql";
-  };
+  # services.mysql = {
+  #   enable = true;
+  #   package = pkgs.mariadb;
+  #   dataDir = "/a/mysql";
+  # };
 
   hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.daemon.enable = true;
@@ -92,12 +92,12 @@
     home-manager
     git
 
-    (steam.override { extraPkgs = pkgs: [
-      zlib
-      gcc
-      libsForQt5.qtbase
-      libsForQt5.qtwayland
-    ]; }).run
+    # (steam.override { extraPkgs = pkgs: [
+    #   zlib
+    #   gcc
+    #   libsForQt5.qtbase
+    #   libsForQt5.qtwayland
+    # ]; }).run
   ];
   environment.defaultPackages = lib.mkForce [];
 
@@ -108,13 +108,13 @@
     # niri.enable = true;
     steam.enable = true;
     # hyprland.enable = true;
-    nix-ld.enable = true;
-    nix-ld.libraries = with pkgs; [
-      zlib
-      gcc
-      libsForQt5.qtbase
-      libsForQt5.qtwayland
-    ];
+    # nix-ld.enable = true;
+    # nix-ld.libraries = with pkgs; [
+    #   zlib
+    #   gcc
+    #   libsForQt5.qtbase
+    #   libsForQt5.qtwayland
+    # ];
   };
 
   fonts.packages = with pkgs; [
@@ -189,10 +189,10 @@
     ];
   };
 
-  virtualisation = {
-    waydroid.enable = true;
-    # lxd.enable = true;
-  };
+  # virtualisation = {
+  #   waydroid.enable = true;
+  #   # lxd.enable = true;
+  # };
 
   hardware = {
     # alsa.enablePersistence = true;
@@ -216,12 +216,12 @@
     mutableUsers = false;
   };
 
-  security = {
-    # sudo.enable = false;
-    doas = {
-      # enable = true;
-    };
-  };
+  # security = {
+  #   # sudo.enable = false;
+  #   doas = {
+  #     # enable = true;
+  #   };
+  # };
 
   security.sudo.extraRules = [{
     groups = [ "wheel" ];
