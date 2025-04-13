@@ -285,6 +285,42 @@
   #   after = [ "local-fs.target" ];
   # };
 
+  fileSystems."/f" =
+    { device = "/nix/files/";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
+  fileSystems."/s" = {
+    device = "/nix/source/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/n" = {
+    device = "/nix/notes/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/a" = {
+    device = "/nix/app/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/d" = {
+    device = "/nix/dot/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/m" = {
+    device = "/nix/media/";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
   xdg.portal.wlr.enable = true;
 
   boot.kernelModules = [ "kvm-amd" ];
