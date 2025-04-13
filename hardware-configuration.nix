@@ -8,6 +8,13 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "uas" "usb_storage" "sd_mod" ];
+  boot.kernelModules = [ "kvm-amd" ];
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+  };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/26288def-a47b-47da-b2c8-f906ef9b6e6f";

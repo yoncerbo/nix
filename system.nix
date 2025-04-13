@@ -323,13 +323,11 @@
 
   xdg.portal.wlr.enable = true;
 
-  boot.kernelModules = [ "kvm-amd" ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.useDHCP = lib.mkDefault true;
 
   # networking.firewall.allowedTCPPorts = [ 8080 80 443 ];
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   system.stateVersion = "23.11";
 }
