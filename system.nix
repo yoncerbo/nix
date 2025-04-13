@@ -174,6 +174,21 @@
     QT_QPA_PLATFORM = "wayland";
   };
 
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      libsForQt5.fcitx5-qt
+      fcitx5-gtk
+      fcitx5-mozc # japanese
+      fcitx5-hangul # korean
+      fcitx5-chinese-addons
+      fcitx5-rime # chinese
+      fcitx5-m17n
+      fcitx5-table-other
+      fcitx5-configtool
+    ];
+  };
+
   virtualisation = {
     waydroid.enable = true;
     # lxd.enable = true;
