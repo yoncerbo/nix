@@ -99,6 +99,7 @@ in {
     dolphin-emu = "/a/dolphin/";
     azahar-emu = "/a/azahar/";
 
+    "applications/persist" = "/a/entries/";
     "applications/wine" = "/a/wine/apps/";
     desktop-directories = "/a/wine/desktop-directories/";
   };
@@ -126,20 +127,6 @@ in {
   };
 
   xdg.mimeApps.enable = true;
-
-  xdg.desktopEntries.textractor = {
-    name = "Textractor";
-    exec = "env WINEPREFIX=/home/m/.wine wine /home/m/.wine/drive_c/users/m/Desktop/Textractor/x86/Textractor.exe";
-    # path = "~/.wine/drive_c/users/m/Desktop/Textractor/";
-    type = "Application";
-  };
-
-  xdg.desktopEntries.unred-night = {
-    name = "Unred Night";
-    exec = "env WINEPREFIX=/home/m/.wine LANG=ja_JP.UTF-8 wine /m/vn/unred-night/URN.exe";
-    # path = "/m/vn/unred-night/";
-    type = "Application";
-  };
 
   xdg.mimeApps.defaultApplications = {
     "application/pdf" = "org.pwmt.zathura.desktop";
