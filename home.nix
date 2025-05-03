@@ -83,6 +83,8 @@ in {
     "BraveSoftware/Brave-Browser" = "/a/brave";
     obs-studio = "/a/obs";
     OpenTabletDriver = "/a/otd";
+    dolphin-emu = "/a/dolphin/";
+    azahar-emu = "/a/azahar/";
   };
 
   xdg.dataFile = mkSymlinks {
@@ -94,6 +96,8 @@ in {
     Steam = "/a/steam-data";
     PrismLauncher = "/a/prism";
     osu = "/a/osu/";
+    dolphin-emu = "/a/dolphin/";
+    azahar-emu = "/a/azahar/";
 
     "applications/wine" = "/a/wine/apps/";
     desktop-directories = "/a/wine/desktop-directories/";

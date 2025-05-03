@@ -124,4 +124,9 @@ pkgs: with pkgs; [
   wineWowPackages.stable
   samba
   xorg.xlsclients
+
+  gamescope
+  dolphin-emu
+  azahar
+  motrix
 ]
