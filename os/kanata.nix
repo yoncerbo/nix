@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, ... }: {
   services.kanata = {
     enable = true;
     keyboards.main.extraDefCfg = ''
@@ -6,7 +6,7 @@
       log-layer-changes no
     '';
     keyboards.main.devices = [ "/dev/input/event0" "/dev/input/by-id/usb-30fa_USB_Optical_Mouse-event-mouse" "/dev/input/by-id/usb-Dell_Dell_USB_Keyboard-event-kbd" ];
-    keyboards.main.config = builtins.readFile ./kanata.kbd;
+    keyboards.main.config = builtins.readFile ../kanata.kbd;
   };
 
   # systemd.services.kanata = {

@@ -19,6 +19,7 @@
         home-manager.nixosModules.home-manager
         ./system.nix
         ./hardware-configuration.nix
+        ./os
         {
           environment.systemPackages = [zen-browser.packages.x86_64-linux.default];
           # nixpkgs.overlays = [ osu.overlay ];
