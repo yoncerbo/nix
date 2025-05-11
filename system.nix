@@ -1,7 +1,6 @@
 { pkgs, lib, config, zen-browser, inputs, ... }: {
   home-manager.users.m = ./home.nix;
   home-manager.backupFileExtension = "backup";
-  # home-manager.backupFileExtension = "backup";
 
   # https://discourse.nixos.org/t/tutorial-for-setting-up-the-lamp-stack-on-a-nixos-server/12508/4
   # services.httpd = {
@@ -260,7 +259,7 @@
       movemouse-inherit-accel-state yes
       log-layer-changes no
     '';
-    keyboards.main.devices = [ "/dev/input/event0" "/dev/input/by-id/usb-30fa_USB_Optical_Mouse-event-mouse" ];
+    keyboards.main.devices = [ "/dev/input/event0" "/dev/input/by-id/usb-30fa_USB_Optical_Mouse-event-mouse" "/dev/input/by-id/usb-Dell_Dell_USB_Keyboard-event-kbd" ];
     keyboards.main.config = builtins.readFile ./kanata.kbd;
   };
 
