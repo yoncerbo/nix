@@ -17,4 +17,11 @@ in {
     "/d" = "/nix/dot/";
     "/m" = "/nix/media/";
   };
+
+  fileSystems."/usb" = {
+    device = "/dev/disk/by-uuid/75757fe7-c997-4b8b-9f8a-67e8e289ad64";
+    fsType = "ext4";
+    options = [ "nofail" "x-systemd.automount" ];
+  };
+
 }
