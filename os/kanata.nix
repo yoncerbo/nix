@@ -9,6 +9,8 @@
     keyboards.main.config = builtins.readFile ../kanata.kbd;
   };
 
+  environment.systemPackages = [ pkgs.kanata ];
+
   # systemd.services.kanata = {
   #   wantedBy = [ "multi-user.target" ];
   #   serviceConfig = {

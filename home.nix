@@ -5,6 +5,13 @@
     # ./home/tmux.nix
     # ./home/xdg-portal.nix
     ./home/symlinks.nix
+    ./home/graphical.nix
+    ./home/desktop-environment.nix
+    ./home/cli.nix
+    ./home/gaming.nix
+    ./home/language-servers.nix
+    ./home/programming.nix
+    ./home/pkgs.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -13,16 +20,7 @@
     username = "m";
     homeDirectory = "/home/m";
     stateVersion = "22.11";
-    packages = import ./pkgs.nix pkgs;
   };
 
   manual.html.enable = true;
-
-  # home.pointerCursor.package = pkgs.vanilla-dmz;
-
-  xdg.mimeApps.enable = true;
-
-  xdg.mimeApps.defaultApplications = {
-    "application/pdf" = "org.pwmt.zathura.desktop";
-  };
 }
