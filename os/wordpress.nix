@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  environment.systemPackages = [ pkgs.wp-cli ];
 
   # https://discourse.nixos.org/t/tutorial-for-setting-up-the-lamp-stack-on-a-nixos-server/12508/4
   services.httpd = {
@@ -11,7 +12,7 @@
     '';
   };
 
-  https://wiki.nixos.org/wiki/PHP
+  # https://wiki.nixos.org/wiki/PHP
   services.httpd.phpPackage = pkgs.php.buildEnv {
     extraConfig = ''
       upload_max_filesize=1G

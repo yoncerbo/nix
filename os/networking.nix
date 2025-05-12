@@ -1,8 +1,8 @@
-{
+{ lib, ... }: {
   networking = {
     hostName = "laptop";
     networkmanager.enable = true;
-    useDHCP = true;
+    useDHCP = lib.mkDefault true;
     # firewall.allowedTCPPorts = [ 8080 80 443 ];
     firewall.enable = true;
   };

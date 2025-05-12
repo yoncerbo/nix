@@ -16,6 +16,7 @@ in {
     "/a" = "/nix/app/";
     "/d" = "/nix/dot/";
     "/m" = "/nix/media/";
+    "/n" = "/nix/notes/";
   };
 
   fileSystems."/usb" = {
