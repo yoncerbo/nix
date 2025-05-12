@@ -1,42 +1,26 @@
 pkgs: with pkgs; [
-  restic
-  rclone
-  anki-bin
-  peaclock
-  swaybg
-  niri
-  home-manager
-  foot
-  nushell
-  carapace # autocompletion for nu
-  dash
-  wlr-randr
-  sway
-  hyprland
-  wofi
-  wob
-  btop
+
+  # Graphical
+  brave
+  # qutebrowser
+  librewolf
   mpv
   zathura
-  libnotify
-  mako
-  brave
-# qutebrowser
-  librewolf
-  ani-cli
-  sd
+  foot
+  anki-bin
+  gimp
+  obs-studio
+  krita
+  # ani-cli
 
-  # Command line utils
-  cmus
-  pulsemixer
+  # cli / tui
+  sd
   bat
   curl
   wget
   man
   pass
   yt-dlp
-  playerctl
-  brightnessctl
   gnupg
   zip
   unar
@@ -51,82 +35,81 @@ pkgs: with pkgs; [
   ripgrep
   tree
   p7zip
-  wl-clipboard
-  bluez
-  pinentry-qt
   rsync
+  restic
+  rclone
+  peaclock
+  nushell
+  carapace # autocompletion for nu
+  btop
+  xdg-utils
+  # speedread
 
+  # Desktop environment
+  fuzzel
   swayimg
   feh
   imv
-
   xwayland
+  pinentry-qt
+  wl-clipboard
+  pamixer
+  playerctl
+  brightnessctl
+  pulsemixer
+  libnotify
+  mako
+  wob
+  wlr-randr
+  sway
+  hyprland
+  swaybg
+  niri
+  river
+  kanata
+
+  # Testing
+  rnote # notes
+  saber # notes
+  motrix # downloader
+
+  # Gaming
   # minetest
+  # mindustry
+  prismlauncher
+  osu-lazer
+  gamescope
+  dolphin-emu
+  azahar
+  convmv # for renaming files in different encodings
+  lutris
+  glxinfo # gpu information
 
-  # tmux
-  # tmuxPlugins.resurrect
-
-  # Misc
-  speedread
-
-  # Vim stuff
+  # Programming
+  glslviewer
+  man-pages
+  man-pages-posix
+  llvm
+  lld
+  iverilog
+  (python3.withPackages (pkgs: with pkgs; [
+    myhdl
+  ]))
+  nodePackages.live-server
   # gcc
   bear
-
-  # Language servers
   markdown-oxide
   clang
   clang-tools
   nodePackages.typescript-language-server
   rust-analyzer
-
-  kdePackages.qtwayland
-  kdePackages.qtsvg
-  xdg-utils
-
-  (python3.withPackages (pkgs: with pkgs; [
-    myhdl
-  ]))
-  nodePackages.live-server
-  obs-studio
-  river
-
-  kanata
-  kdePackages.kdialog
-  wp-cli
-  nasm
   # ld.lld
-  qemu
-  pamixer
   gnumake
+  qemu
+  nasm
 
-  man-pages
-  man-pages-posix
-
-  llvm
-  lld
-  iverilog
-
-  prismlauncher
-  gimp
-  krita
-  glslviewer
-  osu-lazer
-  kanata
-
-  rnote
-  saber
-  fuzzel
-
-  # winetricks
-  # wine-wayland
-  # wine
   wineWowPackages.stable
   samba
   xorg.xlsclients
 
-  gamescope
-  dolphin-emu
-  azahar
-  motrix
 ]
