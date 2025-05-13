@@ -16,6 +16,8 @@
     ./networking.nix
   ];
 
+  networking.hostName = "desktop";
+
   home-manager.users.m = ../home/desktop.nix;
   home-manager.backupFileExtension = "backup";
 
