@@ -1,19 +1,7 @@
 { pkgs, lib, config, zen-browser, inputs, ... }: {
-  includes = [
+  imports = [
     ./hardware-configuration.nix
-    # ./wordpress.nix
-    ./tablet.nix
-    ./fonts.nix
-    ./audio.nix
-    ./bluetooth.nix
-    ./localization.nix
-    # ./waydroid.nix
-    ./kanata.nix
-    # ./keyd.nix
-    ./localization.nix
-    ./mounts.nix
-    ./sudo.nix
-    ./networking.nix
+    ./../os/desktop.nix
   ];
 
   networking.hostName = "desktop";
