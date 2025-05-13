@@ -13,24 +13,25 @@
     # osu.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { self, nixpkgs, home-manager, zen-browser, ... }: {
-    nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         home-manager.nixosModules.home-manager
-        ./system.nix
-        ./hardware-configuration.nix
-        ./os
-        {
-          environment.systemPackages = [zen-browser.packages.x86_64-linux.default];
-          # nixpkgs.overlays = [ osu.overlay ];
-        }
+        ./laptop
       ];
     };
-    homeConfigurations.m = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
       modules = [
-        ./home.nix
+        home-manager.nixosModules.home-manager
+        ./desktop/
       ];
     };
+    # homeConfigurations.m = home-manager.lib.homeManagerConfiguration {
+    #   pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    #   modules = [
+    #     ./home.nix
+    #   ];
+    # };
   };
 }

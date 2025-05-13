@@ -1,6 +1,22 @@
 { pkgs, lib, config, zen-browser, inputs, ... }: {
+  includes = [
+    ./hardware-configuration.nix
+    # ./wordpress.nix
+    ./tablet.nix
+    ./fonts.nix
+    ./audio.nix
+    ./bluetooth.nix
+    ./localization.nix
+    # ./waydroid.nix
+    ./kanata.nix
+    # ./keyd.nix
+    ./localization.nix
+    ./mounts.nix
+    ./sudo.nix
+    ./networking.nix
+  ];
 
-  home-manager.users.m = ./home.nix;
+  home-manager.users.m = ../home/laptop.nix;
   home-manager.backupFileExtension = "backup";
 
   nixpkgs.config.allowUnfree = true;
