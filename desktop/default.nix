@@ -15,6 +15,8 @@
     neovim
     home-manager
     git
+    via # qmk
+    vial
   ];
   environment.defaultPackages = lib.mkForce [];
 
@@ -65,4 +67,23 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   system.stateVersion = "23.11";
+
+  hardware.graphics.enable = true;
+  hardware.opengl.enable = true;
+  # hardware.driSupport = true;
+
+  boot.supportedFilesystems = [ "nfs" "ntfs-3g" ];
+
+  fileSystems = lib.mergeAttrsList (builtins.map (dir: {
+    "/mnt/${dir}" = {
+      device = "192.168.94.150:/${dir}";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" ];
+    };
+  }) [ "a" "f" "m" "n" "s" "d" ]);
+
+  systemd.services.NetworkManager-wait-online.enable = false;
+
+  boot.loader.timeout = 0;
+  boot.loader.systemd-boot.configurationLimit = 32;
 }
