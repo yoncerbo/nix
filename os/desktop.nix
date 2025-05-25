@@ -13,5 +13,7 @@
     ./mounts.nix
     ./sudo.nix
     ./networking.nix
+    ./keyboard.nix
+    ./vr.nix
   ];
 }
