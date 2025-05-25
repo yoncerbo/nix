@@ -10,12 +10,10 @@ in {
   systemd.mounts = mkBinds {
     "etc/NetworkManager/system-connections" = "/a/network-manager/";
     "etc/machine-id" = "/a/machine-id";
-    "/etc/nixos" = "/d/nix";
+    "/etc/nixos" = "/nix/source/nix";
     "/f" = "/nix/files/";
     "/s" = "/nix/source/";
     "/a" = "/nix/app/";
-    "/d" = "/nix/dot/";
-    "/m" = "/nix/media/";
     "/n" = "/nix/notes/";
   };
 

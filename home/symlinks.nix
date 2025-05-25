@@ -4,17 +4,17 @@
   }) set;
 in {
   xdg.configFile = mkSymlinks {
-    "niri/config.kdl" = "/d/niri.kdl";
-    "nushell/config.nu" = "/d/config.nu";
-    "nushell/env.nu" = "/d/env.nu";
+    "niri/config.kdl" = "/s/dot/niri.kdl";
+    "nushell/config.nu" = "/s/dot/config.nu";
+    "nushell/env.nu" = "/s/dot/env.nu";
     "nushell/history.txt" = "/a/nu-history";
-    "hypr/hyprland.conf" = "/d/hyprland.conf";
-    "sway/config" = "/d/sway";
-    "foot/foot.ini" = "/d/foot.ini";
-    "mako/config" = "/d/mako.ini";
-    "wob/wob.ini" = "/d/wob.ini";
-    "mpv/input.conf" = "/d/mpv.conf";
-    "river/init" = "/d/river.sh";
+    "hypr/hyprland.conf" = "/s/dot/hyprland.conf";
+    "sway/config" = "/s/dot/sway";
+    "foot/foot.ini" = "/s/dot/foot.ini";
+    "mako/config" = "/s/dot/mako.ini";
+    "wob/wob.ini" = "/s/dot/wob.ini";
+    "mpv/input.conf" = "/s/dot/mpv.conf";
+    "river/init" = "/s/dot/river.sh";
 
     rclone = "/a/rclone";
     fcitx5 = "/a/fcitx5";
@@ -46,7 +46,7 @@ in {
   };
 
   home.file = mkSymlinks {
-    ".peaclock/config" = "/d/peaclock";
+    ".peaclock/config" = "/s/dot/peaclock";
 
     ".rustup" = "/a/rustup";
     ".cargo" = "/a/cargo";
@@ -63,8 +63,6 @@ in {
     n = "/n";
     s = "/s";
     a = "/a";
-    d = "/d";
-    m = "/m";
   };
 
 }
