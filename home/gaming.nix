@@ -10,5 +10,6 @@
     pkgs.convmv # for renaming files in different encodings
     pkgs.lutris # game launcher
     pkgs.glxinfo # gpu information
+    pkgs.winetricks # required for lutris
   ];
 }
