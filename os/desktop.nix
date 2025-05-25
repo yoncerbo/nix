@@ -7,7 +7,7 @@
     ./bluetooth.nix
     ./localization.nix
     # ./waydroid.nix
-    ./kanata.nix
+    # ./kanata.nix
     # ./keyd.nix
     ./localization.nix
     ./mounts.nix
