@@ -11,7 +11,6 @@
     pkgs.xwayland
     pkgs.pinentry-qt
     pkgs.wl-clipboard
-    pkgs.pamixer
     pkgs.playerctl
     pkgs.brightnessctl
     pkgs.libnotify
