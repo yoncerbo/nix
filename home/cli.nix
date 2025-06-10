@@ -25,11 +25,14 @@
     pkgs.restic
     pkgs.rclone
     pkgs.peaclock
+    pkgs.ffmpeg
     pkgs.nushell
     pkgs.carapace # autocompletion for nu
     pkgs.btop
     pkgs.xdg-utils
     pkgs.pulsemixer
     # pkgs.speedread
+    pkgs.usbutils
+    pkgs.sysstat
   ];
 }
