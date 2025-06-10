@@ -15,5 +15,6 @@
     ./networking.nix
     ./keyboard.nix
     ./vr.nix
+    ./syncthing.nix
   ];
 }

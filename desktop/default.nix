@@ -17,6 +17,7 @@
     git
     via # qmk
     vial
+    lact # gpu controller
   ];
   environment.defaultPackages = lib.mkForce [];
 
@@ -33,6 +34,7 @@
       allowed-users = [ "m" ];
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
+      trusted-users = [ "root" "m" ];
     };
   };
 
@@ -70,7 +72,7 @@
 
   hardware.graphics.enable = true;
   hardware.opengl.enable = true;
-  # hardware.driSupport = true;
+  hardware.graphics.enable32Bit = true;
 
   boot.supportedFilesystems = [ "nfs" "ntfs-3g" ];
 
@@ -86,4 +88,28 @@
 
   boot.loader.timeout = 0;
   boot.loader.systemd-boot.configurationLimit = 32;
+
+  services.greetd = {
+    enable =  true;
+    settings = {
+      default_session = {
+        user = "m";
+        command = "${pkgs.river}/bin/river";
+      };
+    };
+  };
+
+  hardware.graphics.extraPackages = with pkgs; [
+    #
+  ];
+
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
+
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
 }

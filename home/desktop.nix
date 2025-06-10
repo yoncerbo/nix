@@ -14,6 +14,7 @@
     ./language-servers.nix
     ./programming.nix
     ./pkgs.nix
+    ./obs.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

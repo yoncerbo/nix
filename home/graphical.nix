@@ -10,7 +10,6 @@
     pkgs.foot
     pkgs.anki-bin
     pkgs.gimp
-    pkgs.obs-studio
     pkgs.krita
     # pkgs.ani-cli
 

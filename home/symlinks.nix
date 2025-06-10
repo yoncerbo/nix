@@ -26,6 +26,8 @@ in {
     OpenTabletDriver = "/a/otd";
     dolphin-emu = "/a/dolphin/";
     azahar-emu = "/a/azahar/";
+    qBittorrent = "/a/qBittorrent/";
+    sunshine = "/a/sunshine";
   };
 
   xdg.dataFile = mkSymlinks {
@@ -40,6 +42,8 @@ in {
     dolphin-emu = "/a/dolphin/";
     azahar-emu = "/a/azahar/";
     lutris = "/a/lutris";
+    umu = "/a/umu"; # proton
+    QRookie = "/mnt/2/games/QRookie";
 
     "applications/persist" = "/a/entries/";
     "applications/wine" = "/a/wine/apps/";

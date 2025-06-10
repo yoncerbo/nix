@@ -11,5 +11,7 @@
     pkgs.lutris # game launcher
     pkgs.glxinfo # gpu information
     pkgs.winetricks # required for lutris
+    pkgs.wineWowPackages.staging
+    pkgs.samba # for wine
   ];
 }
