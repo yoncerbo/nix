@@ -1,4 +1,5 @@
 {
+  security.sudo.wheelNeedsPassword = false;
   security.sudo.extraRules = [{
     groups = [ "wheel" ];
     commands = [
