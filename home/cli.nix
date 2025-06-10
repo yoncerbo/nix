@@ -34,5 +34,6 @@
     # pkgs.speedread
     pkgs.usbutils
     pkgs.sysstat
+    pkgs.xorg.xlsclients
   ];
 }

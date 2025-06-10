@@ -9,8 +9,6 @@
     pkgs.zathura
     pkgs.foot
     pkgs.anki-bin
-    pkgs.gimp
-    pkgs.krita
     # pkgs.ani-cli
 
     pkgs.swayimg

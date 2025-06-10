@@ -3,7 +3,7 @@
     ./git.nix
     ./neovim.nix
     # ./tmux.nix
-    # ./xdg-portal.nix
+    ./xdg-portal.nix
     ./symlinks.nix
 
     # Packages
@@ -15,6 +15,7 @@
     ./programming.nix
     ./pkgs.nix
     ./obs.nix
+    ./desktop-pkgs.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

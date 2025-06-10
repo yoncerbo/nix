@@ -3,14 +3,13 @@
     ./git.nix
     ./neovim.nix
     # ./tmux.nix
-    # ./xdg-portal.nix
+    ./xdg-portal.nix
     ./symlinks.nix
 
     # Packages
     ./graphical.nix
     ./desktop-environment.nix
     ./cli.nix
-    ./gaming.nix
     ./language-servers.nix
     ./programming.nix
     ./pkgs.nix

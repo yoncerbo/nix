@@ -9,7 +9,6 @@
     # ./waydroid.nix
     # ./kanata.nix
     # ./keyd.nix
-    ./localization.nix
     ./mounts.nix
     ./sudo.nix
     ./networking.nix
