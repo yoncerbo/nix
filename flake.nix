@@ -32,10 +32,16 @@
         }
       ];
     };
-    homeConfigurations.m = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.desktop = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules = [
         ./home/desktop.nix
+      ];
+    };
+    homeConfigurations.laptop = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [
+        ./home/laptop.nix
       ];
     };
   };
