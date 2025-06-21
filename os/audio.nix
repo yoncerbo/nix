@@ -8,5 +8,6 @@
     helvum
     pavucontrol
     pamixer
+    pulseaudio # for pactl
   ];
 }

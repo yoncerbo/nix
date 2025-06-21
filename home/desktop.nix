@@ -26,5 +26,16 @@
     stateVersion = "22.11";
   };
 
+
+  gtk = {
+    enable = true;
+    theme.name = "orchis-theme";
+    theme.package = pkgs.orchis-theme;
+    iconTheme.name = "Adwaita";
+    iconTheme.package = pkgs.adwaita-icon-theme;
+    cursorTheme.name = "Adwaita";
+    cursorTheme.package = pkgs.adwaita-icon-theme;
+  };
+
   manual.html.enable = true;
 }

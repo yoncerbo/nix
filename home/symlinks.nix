@@ -4,30 +4,32 @@
   }) set;
 in {
   xdg.configFile = mkSymlinks {
-    "niri/config.kdl" = "/s/dot/niri.kdl";
-    "nushell/config.nu" = "/s/dot/config.nu";
-    "nushell/env.nu" = "/s/dot/env.nu";
-    "nushell/history.txt" = "/a/nu-history";
-    "hypr/hyprland.conf" = "/s/dot/hyprland.conf";
-    "sway/config" = "/s/dot/sway";
-    "foot/foot.ini" = "/s/dot/foot.ini";
-    "mako/config" = "/s/dot/mako.ini";
-    "wob/wob.ini" = "/s/dot/wob.ini";
-    "mpv/input.conf" = "/s/dot/mpv.conf";
-    "river/init" = "/s/dot/river.sh";
+    niri = "/s/dot/niri";
+    nushell = "/s/dot/nushell"; # history is a symlink to /a/nu-history
+    hypr = "/s/dot/hypr";
+    sway = "/s/dot/sway";
+    foot = "/s/dot/foot";
+    mako = "/s/dot/mako";
+    wob = "/s/dot/wob";
+    mpv = "/s/dot/mpv";
+    river = "/s/dot/river";
+    fuzzel = "/s/dot/fuzzel";
+    networkmanager-dmenu = "/s/dot/networkmanager-dmenu";
 
     rclone = "/a/rclone";
     fcitx5 = "/a/fcitx5";
-    nvim = "/a/nvim";
+    nvim = "/a/nvim"; # symlink inside to /s/dot/nvim
     cmus = "/a/cmus";
     mozc = "/a/mozc";
     "BraveSoftware/Brave-Browser" = "/a/brave";
     obs-studio = "/a/obs";
     OpenTabletDriver = "/a/otd";
-    dolphin-emu = "/a/dolphin/";
-    azahar-emu = "/a/azahar/";
     qBittorrent = "/a/qBittorrent/";
     sunshine = "/a/sunshine";
+    alvr = "/a/alvr";
+
+    dolphin-emu = "/mnt/2/appdata/dolphin-emu/";
+    azahar-emu = "/mnt/2/appdata/azahar-emu/";
   };
 
   xdg.dataFile = mkSymlinks {
@@ -39,11 +41,13 @@ in {
     Steam = "/a/steam-data";
     PrismLauncher = "/a/prism";
     osu = "/a/osu/";
-    dolphin-emu = "/a/dolphin/";
-    azahar-emu = "/a/azahar/";
     lutris = "/a/lutris";
     umu = "/a/umu"; # proton
+
     QRookie = "/mnt/2/games/QRookie";
+
+    dolphin-emu = "/mnt/2/appdata/dolphin-emu/";
+    azahar-emu = "/mnt/2/appdata/azahar-emu/";
 
     "applications/persist" = "/a/entries/";
     "applications/wine" = "/a/wine/apps/";
@@ -52,6 +56,7 @@ in {
   home.file = mkSymlinks {
     ".peaclock/config" = "/s/dot/peaclock";
 
+    ".git-credentials" = "/a/git/git-credentials";
     ".rustup" = "/a/rustup";
     ".cargo" = "/a/cargo";
     ".gnupg" = "/a/gnupg";
@@ -60,6 +65,7 @@ in {
     ".minetest" = "/a/minetest/";
     ".steam" = "/a/steam/";
     ".wine" = "/a/wine2";
+    ".zen" = "/a/zen/";
 
     ".cache/mpv" = "/a/mpv";
 

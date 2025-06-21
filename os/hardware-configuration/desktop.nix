@@ -9,8 +9,8 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.kernelModules = [ "kvm-amd" "v4l2loopback" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-amd" "v4l2loopback" "i2c-dev" "ddcci-backlight" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
 
   fileSystems."/" = {
     device = "none";

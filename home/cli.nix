@@ -1,5 +1,7 @@
 { pkgs, ... }: {
   home.packages = [
+    pkgs.ddcutil
+    pkgs.inotify-tools
     pkgs.sd
     pkgs.bat
     pkgs.curl

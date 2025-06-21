@@ -3,5 +3,12 @@
     qbittorrent
     wayvnc
     remmina
+    
+    # Screenshot tools
+    wayshot
+    grim
+    slurp
+    flameshot
+    satty
   ];
 }

@@ -12,26 +12,31 @@
     # osu.url = "github:notgne2/osu-nixos";
     # osu.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, home-manager, zen-browser, ... }: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         home-manager.nixosModules.home-manager
-        ./laptop
+        ./os/laptop.nix
       ];
     };
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         home-manager.nixosModules.home-manager
-        ./desktop
+        ./os/desktop.nix
+        {
+          environment.systemPackages = [
+            inputs.zen-browser.packages.x86_64-linux.default
+          ];
+        }
       ];
     };
-    # homeConfigurations.m = home-manager.lib.homeManagerConfiguration {
-    #   pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    #   modules = [
-    #     ./home.nix
-    #   ];
-    # };
+    homeConfigurations.m = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [
+        ./home/desktop.nix
+      ];
+    };
   };
 }

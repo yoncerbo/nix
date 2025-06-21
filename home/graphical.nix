@@ -5,6 +5,7 @@
     pkgs.librewolf
     # pkgs.qutebrowser
 
+    pkgs.gnome-calculator
     pkgs.mpv
     pkgs.zathura
     pkgs.foot

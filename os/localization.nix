@@ -17,17 +17,16 @@
   };
 
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    enable = true;
+    type = "fcitx5";
     fcitx5.addons = with pkgs; [
-      libsForQt5.fcitx5-qt
-      fcitx5-gtk
+      kdePackages.fcitx5-qt
       fcitx5-mozc # japanese
       fcitx5-hangul # korean
-      fcitx5-chinese-addons
-      fcitx5-rime # chinese
       fcitx5-m17n
       fcitx5-table-other
       fcitx5-configtool
+      fcitx5-nord
     ];
   };
 }
