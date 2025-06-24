@@ -8,13 +8,14 @@ let
   }) set);
 in {
   systemd.mounts = mkBinds {
-    "etc/NetworkManager/system-connections" = "/a/network-manager/";
-    "etc/machine-id" = "/a/machine-id";
-    "/etc/nixos" = "/nix/source/nix";
-    "/f" = "/nix/files/";
-    "/s" = "/nix/source/";
-    "/a" = "/nix/app/";
-    "/n" = "/nix/notes/";
+    "etc/NetworkManager/system-connections" = "/persist/a/network-manager/";
+    "/etc/nixos" = "/persist/s/nix";
+    # "etc/machine-id" = "/a/machine-id";
+
+    "/f" = "/persist/f/";
+    "/s" = "/persist/s/";
+    "/a" = "/persist/a/";
+    "/n" = "/persist/n/";
   };
 
 }

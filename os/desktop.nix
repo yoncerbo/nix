@@ -144,4 +144,14 @@
   };
 
   programs.dconf.enable = true; # for home-manager gtk settings
+
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    fileSystems = [ "/" ];
+  };
+
+  environment.etc.machine-id.text = "3692bf4d4c5247c6b560a524889d44bc";
+
+  networking.firewall.allowedUDPPorts = [ 53 67 ];
 }

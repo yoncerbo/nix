@@ -12,25 +12,58 @@
   boot.kernelModules = [ "kvm-amd" "v4l2loopback" "i2c-dev" "ddcci-backlight" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
 
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-  }; 
+  # fileSystems."/" = {
+  #   device = "none";
+  #   fsType = "tmpfs";
+  #   options = [ "size=3G" ];
+  # }; 
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/1a9ead47-d1bb-4c02-aa32-cb9a09d80bd3";
-      fsType = "ext4";
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
       neededForBoot = true;
+      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/persist" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      neededForBoot = true;
+      options = [ "subvol=persist" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      options = [ "subvol=root" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/mnt/1" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "noatime" ];
     };
 
   fileSystems."/mnt/2" =
-    { device = "/dev/disk/by-uuid/7aaaf328-fb7c-4710-9575-b40d749a47b0";
-      fsType = "ext4";
-      neededForBoot = false;
+    { device = "/dev/disk/by-label/NVME2";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/mnt/3" =
+    { device = "/dev/disk/by-label/SATA-1";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "noatime" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/57F4-55FB";
+    { device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
