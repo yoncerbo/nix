@@ -69,4 +69,10 @@
   i18n.defaultLocale = lib.mkForce "pl_PL.UTF-8/UTF-8";
 
   security.sudo.wheelNeedsPassword = false;
+
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
 }
