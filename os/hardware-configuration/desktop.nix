@@ -18,6 +18,16 @@
   #   options = [ "size=3G" ];
   # }; 
 
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-label/NIXBOOT";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  swapDevices = [{
+    device = "/dev/disk/by-uuid/eb4b1399-fea0-460f-9a5f-39de3d963835";
+  }];
+
   fileSystems."/nix" =
     { device = "/dev/disk/by-label/NIXROOT";
       fsType = "btrfs";
@@ -61,16 +71,6 @@
       fsType = "btrfs";
       options = [ "compress=zstd" "noatime" ];
     };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-label/NIXBOOT";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  swapDevices = [{
-    device = "/dev/disk/by-uuid/eb4b1399-fea0-460f-9a5f-39de3d963835";
-  }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

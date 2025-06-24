@@ -11,23 +11,46 @@
   boot.kernelModules = [ "kvm-amd" ];
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/26288def-a47b-47da-b2c8-f906ef9b6e6f";
-    fsType = "ext4";
-    neededForBoot = true;
-  };
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BBE7-1259";
+    { device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/591388f6-3fc1-4d47-9791-80b256f25032"; }
-    ];
+  swapDevices = [{
+    device = "/dev/disk/by-label/NIXSWAP";
+  }];
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      neededForBoot = true;
+      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/persist" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      neededForBoot = true;
+      options = [ "subvol=persist" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      options = [ "subvol=root" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/mnt/1" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "noatime" ];
+    };
+
 }

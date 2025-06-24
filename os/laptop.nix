@@ -20,6 +20,7 @@
     neovim
     home-manager
     git
+    wayvnc
   ];
   environment.defaultPackages = lib.mkForce [];
 
