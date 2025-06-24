@@ -68,5 +68,19 @@
 
   i18n.defaultLocale = lib.mkForce "pl_PL.UTF-8/UTF-8";
 
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    fileSystems = [ "/" ];
+  };
+
+  environment.etc.machine-id.text = "3692bf4d4c5247c6b560a524889d44bc";
+
   security.sudo.wheelNeedsPassword = false;
+
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
 }
