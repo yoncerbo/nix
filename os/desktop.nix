@@ -11,7 +11,6 @@
     # ./kanata.nix
     # ./keyd.nix
     ./mounts.nix
-    ./sudo.nix
     ./networking.nix
     ./keyboard.nix
     ./vr.nix
@@ -153,5 +152,8 @@
 
   environment.etc.machine-id.text = "3692bf4d4c5247c6b560a524889d44bc";
 
+  # For sharing wifi over ethernet using network-manager
   networking.firewall.allowedUDPPorts = [ 53 67 ];
+
+  security.sudo.wheelNeedsPassword = false;
 }

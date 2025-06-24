@@ -7,6 +7,7 @@
     pkgs.sway
 
     # Stuff used in the config and utilities
+    pkgs.wdisplays
     pkgs.swayidle
     pkgs.waybar
     pkgs.hyprlock

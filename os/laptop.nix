@@ -1,17 +1,11 @@
 { pkgs, lib, config, zen-browser, inputs, ... }: {
   imports = [
     ./hardware-configuration/laptop.nix
-    # ./wordpress.nix
-    # ./tablet.nix
     ./fonts.nix
     ./audio.nix
     ./bluetooth.nix
     ./localization.nix
-    # ./waydroid.nix
-    # ./kanata.nix
-    # ./keyd.nix
     ./mounts.nix
-    ./sudo.nix
     ./networking.nix
   ];
 
@@ -28,12 +22,6 @@
     git
   ];
   environment.defaultPackages = lib.mkForce [];
-
-  programs = {
-    thunar.enable = true;
-    adb.enable = true;
-    steam.enable = true;
-  };
 
   nixpkgs.overlays = [];
 
@@ -76,4 +64,8 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   system.stateVersion = "23.11";
+
+  i18n.defaultLocale = lib.mkForce "pl_PL.UTF-8/UTF-8";
+
+  security.sudo.wheelNeedsPassword = false;
 }

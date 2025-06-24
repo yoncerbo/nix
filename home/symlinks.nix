@@ -15,6 +15,7 @@ in {
     river = "/s/dot/river";
     fuzzel = "/s/dot/fuzzel";
     networkmanager-dmenu = "/s/dot/networkmanager-dmenu";
+    waybar = "/s/dot/waybar/";
 
     rclone = "/a/rclone";
     fcitx5 = "/a/fcitx5";
