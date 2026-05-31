@@ -63,14 +63,27 @@
   fileSystems."/mnt/2" =
     { device = "/dev/disk/by-label/NVME2";
       fsType = "btrfs";
-      options = [ "compress=zstd" "noatime" ];
+      options = [ "compress=zstd" "noatime" "nofail" ];
     };
 
   fileSystems."/mnt/3" =
     { device = "/dev/disk/by-label/SATA-1";
       fsType = "btrfs";
-      options = [ "compress=zstd" "noatime" ];
+      options = [ "compress=zstd" "noatime" "nofail" ];
     };
+
+  services.davfs2 = {
+    enable = true;
+    settings.globalSection = {
+      ask_auth = 0;
+    };
+  };
+
+  # fileSystems."/mnt/nc/" = {
+  #   device = "http://srv67.mikr.us:20187/remote.php/dav/files/admin";
+  #   fsType = "davfs";
+  #   options = [ "nofail" "uid=1000" "gid=1000" "noatime" ];
+  # };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

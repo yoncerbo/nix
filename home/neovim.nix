@@ -4,9 +4,8 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    plugins = with pkgs; [
+      # vimPlugins.nvim-treesitter.withAllGrammars
+    ];
   };
-
-  home.packages = with pkgs; [
-    gcc # for compiling tree-sitter parsers
-  ];
 }

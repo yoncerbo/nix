@@ -25,8 +25,8 @@
       fcitx5-hangul # korean
       fcitx5-m17n
       fcitx5-table-other
-      fcitx5-configtool
       fcitx5-nord
+      qt6Packages.fcitx5-configtool
     ];
   };
 }

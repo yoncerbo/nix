@@ -7,8 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
-    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    # zen-browser = {
+    #   url = "github:youwen5/zen-browser-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    glaumar.url = "github:glaumar/nur";
+    glaumar.inputs.nixpkgs.follows = "nixpkgs";
     # osu.url = "github:notgne2/osu-nixos";
     # osu.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -23,18 +27,25 @@
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        home-manager.nixosModules.home-manager
-        ./os/desktop.nix
         {
           environment.systemPackages = [
-            inputs.zen-browser.packages.x86_64-linux.default
+            # inputs.zen-browser.packages.x86_64-linux.default
           ];
         }
+        home-manager.nixosModules.home-manager
+        ./os/desktop.nix
       ];
     };
     homeConfigurations.desktop = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules = [
+        {
+          nixpkgs.overlays = [
+            (final: prev: {
+              glaumar = inputs.glaumar.packages."${prev.system}";
+            })
+          ];
+        }
         ./home/desktop.nix
       ];
     };

@@ -16,6 +16,8 @@
     ./vr.nix
     ./syncthing.nix
     ./openrgb.nix
+    ./ssh.nix
+    ./nextcloud.nix
   ];
 
   networking.hostName = "desktop";
@@ -37,7 +39,6 @@
 
   programs = {
     thunar.enable = true;
-    adb.enable = true;
     steam.enable = true;
   };
 
@@ -63,7 +64,10 @@
 
   users = {
     users.m = {
-      extraGroups = [ "wheel" "audio" "video" "uinput" "input" "networkmanager" ];
+      extraGroups = [ 
+        "wheel" "audio" "video" "uinput" "input" "networkmanager" "kvm" "adbusers"
+        "dialout" # tty stuff
+      ];
       isNormalUser = true;
       # sudo mkpasswd -m sha-512 "password"
       hashedPassword = "$6$/5al5la2aDXWmNiQ$IRfje.1DyTG4RsvhLZSgWz8qlLrN98BvgofrX0WfABZPo6SiOXh5n3JNezltNOBJDYYeJgr9CjyQpZ3Z8BK3R1";
@@ -85,7 +89,6 @@
   system.stateVersion = "23.11";
 
   hardware.graphics.enable = true;
-  hardware.opengl.enable = true;
   hardware.graphics.enable32Bit = true;
 
   boot.supportedFilesystems = [ "nfs" "ntfs-3g" ];
@@ -105,41 +108,28 @@
 
   services.greetd = {
     enable =  true;
-    settings = {
+    settings = rec {
       default_session = {
         user = "m";
-        command = "${pkgs.hyprland}/bin/Hyprland";
+        command = "${pkgs.hyprland}/bin/start-hyprland";
         # command = "${pkgs.river}/bin/river";
       };
     };
   };
 
-  hardware.graphics.extraPackages = with pkgs; [
-    #
-  ];
+  # programs.hyprland = {
+  #   enable = true;
+  #   withUWSM = true;
+  # }
 
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
   services.sunshine = {
     enable = true;
-    autoStart = true;
+    autoStart = false;
     capSysAdmin = true;
     openFirewall = true;
-  };
-
-  environment.etc = {
-    "xdg/gtk-2.0/grkrc".text = "gtk-error-bell=0";
-    "xdg/gtk-3.0/settings.ini".text = ''
-      [Settings]
-      gtk-error-bell=false
-      gtk-applicaiton-prefer-dark-theme=1
-    '';
-    "xdg/gtk-4.0/settings.ini".text = ''
-      [Settings]
-      gtk-error-bell=false
-      gtk-applicaiton-prefer-dark-theme=1
-    '';
   };
 
   programs.dconf.enable = true; # for home-manager gtk settings
@@ -151,9 +141,55 @@
   };
 
   environment.etc.machine-id.text = "3692bf4d4c5247c6b560a524889d44bc";
+  environment.etc."firefox/policies/policies.json".text = ''
+  {
+    "policies": {
+      "AppAutoUpdate": false,
+      "DisableAppUpdate": true,
+      "ManualAppUpdateOnly": true
+    }
+  }
+  '';
 
   # For sharing wifi over ethernet using network-manager
   networking.firewall.allowedUDPPorts = [ 53 67 ];
 
   security.sudo.wheelNeedsPassword = false;
+
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+    greetd.u2fAuth = true;
+    hyprlock.u2fAuth = true;
+  };
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
+  programs.appimage.package = pkgs.appimage-run.override {
+    extraPkgs = pkgs: [
+      pkgs.icu
+    ];
+  };
+
+  programs.kdeconnect = {
+    enable = true;
+  };
+
+  services.udisks2.enable = true;
+
+  services.rkvm.server = {
+    enable = true;
+    settings = {
+      password = "helloworld";
+    };
+  };
+
+
+  # services.suwayomi-server.enable = true;
+  # services.suwayomi-server.settings.server.port = 4567;
+  # services.suwayomi-server.settings.server.ip = "192.168.232.183";
+  # services.suwayomi-server.openFirewall = true;
 }

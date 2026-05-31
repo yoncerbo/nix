@@ -5,8 +5,8 @@
 in {
   xdg.configFile = mkSymlinks {
     niri = "/s/dot/niri";
-    nushell = "/s/dot/nushell"; # history is a symlink to /a/nu-history
-    hypr = "/s/dot/hypr";
+    nushell = "/s/dot/nushell";
+    # hypr = "/s/dot/hypr";
     sway = "/s/dot/sway";
     foot = "/s/dot/foot";
     mako = "/s/dot/mako";
@@ -16,6 +16,7 @@ in {
     fuzzel = "/s/dot/fuzzel";
     networkmanager-dmenu = "/s/dot/networkmanager-dmenu";
     waybar = "/s/dot/waybar/";
+    ghostty = "/s/dot/ghostty/";
 
     rclone = "/a/rclone";
     fcitx5 = "/a/fcitx5";
@@ -29,8 +30,10 @@ in {
     sunshine = "/a/sunshine";
     alvr = "/a/alvr";
 
-    dolphin-emu = "/mnt/2/appdata/dolphin-emu/";
-    azahar-emu = "/mnt/2/appdata/azahar-emu/";
+    dolphin-emu = "/a/dolphin-emu/";
+    azahar-emu = "/a/azahar-emu/";
+
+    "Yubico/u2f_keys" = "/f/secrets/yubico_u2f_keys";
   };
 
   xdg.dataFile = mkSymlinks {
@@ -47,8 +50,8 @@ in {
 
     QRookie = "/mnt/2/games/QRookie";
 
-    dolphin-emu = "/mnt/2/appdata/dolphin-emu/";
-    azahar-emu = "/mnt/2/appdata/azahar-emu/";
+    dolphin-emu = "/a/dolphin-emu/";
+    azahar-emu = "/a/azahar-emu/";
 
     "applications/persist" = "/a/entries/";
     "applications/wine" = "/a/wine/apps/";

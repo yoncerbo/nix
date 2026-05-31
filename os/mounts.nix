@@ -11,6 +11,7 @@ in {
     "etc/NetworkManager/system-connections" = "/persist/a/network-manager/";
     "/etc/nixos" = "/persist/s/nix";
     # "etc/machine-id" = "/a/machine-id";
+    "/etc/davfs2/secrets" = "/f/secrets/davfs";
 
     "/f" = "/persist/f/";
     "/s" = "/persist/s/";

@@ -3,6 +3,7 @@
     qbittorrent
     wayvnc
     remmina
+    android-tools
     
     # Screenshot tools
     wayshot

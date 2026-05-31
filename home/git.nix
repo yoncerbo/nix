@@ -1,9 +1,9 @@
 { ... }: {
   programs.git = {
     enable = true;
-    userName = "meersen";
-    userEmail = "<>";
-    extraConfig = {
+    settings = {
+      user.email = "<>";
+      user.name = "meersen";
       init.defaultBranch = "main";
       credential.helper = "store";
     };

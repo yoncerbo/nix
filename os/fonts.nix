@@ -3,9 +3,8 @@
     nerd-fonts.fira-code
     fira-code
     fira-code-symbols
-    noto-fonts-emoji
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
 
     liberation_ttf
     mplus-outline-fonts.githubRelease
