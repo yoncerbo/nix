@@ -152,7 +152,7 @@
   '';
 
   # For sharing wifi over ethernet using network-manager
-  networking.firewall.allowedUDPPorts = [ 53 67 ];
+  networking.firewall.allowedUDPPorts = [ 53 67 4242 ];
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -179,14 +179,6 @@
   };
 
   services.udisks2.enable = true;
-
-  services.rkvm.server = {
-    enable = true;
-    settings = {
-      password = "helloworld";
-    };
-  };
-
 
   # services.suwayomi-server.enable = true;
   # services.suwayomi-server.settings.server.port = 4567;
