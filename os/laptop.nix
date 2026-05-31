@@ -58,8 +58,9 @@
   services.libinput.enable = true;
 
   powerManagement.enable = true;
-  services.thermald.enable = true;
-  services.tlp.enable = true;
+  # TODO: Resolve the conflict
+  # services.thermald.enable = true;
+  # services.tlp.enable = true;
 
   xdg.portal.wlr.enable = true;
 
